@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@600;700;800&family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap');
+
+/* || GENERAL || */
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+header {
+    width: 100%;
+    height: 78px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header ul {
+    display: flex;
+}
+
+header li {
+    list-style: none;
+    padding-right: 25px;
+}
+
+
+
+/* || PRODUCT CRUD STYLES */

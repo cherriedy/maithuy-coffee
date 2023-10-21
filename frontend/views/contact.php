@@ -4,7 +4,7 @@
     <div class="contact-box">
         <div class="contact-box-left">
             <h3 style="color: #002B3D;">Nhập thông tin</h3>
-            <form method="post" action="./frontend/functions/fn_contact.php">
+            <form method="post" action="./frontend/functions/contact/create.php">
                 <div class="input-row">
                     <div class="input-group">
                         <label>Họ và tên</label>
@@ -29,7 +29,7 @@
 
                 <label>Nội dung</label>
                 <textarea rows="5" placeholder="Nội dung của bạn" name="content"></textarea>
-                <input type="submit" value="GỬI" class="submit">
+                <input type="submit" value="GỬI" class="submit" name="submit">
             </form>
         </div>
 

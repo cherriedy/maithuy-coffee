@@ -25,20 +25,17 @@
         include_once($ASSETS['DIR_DATABASE'] . 'db_connect.php');
         // INCLUDE: DB_QUERY.PHP
         include_once($ASSETS['DIR_DATABASE'] . 'db_query.php');
-        // INCLUDE: SS_START.PHP
-        include_once($BACKEND['DIR_SESSION'] . 'ss_start.php');
-        // INCLUDE: SS_CLOSE.PHP
-        include_once($BACKEND['DIR_SESSION'] . 'ss_close.php');
-        // CALL: SESSION_BEGIN() => CHECK SESSION IS CREATED AND START SESSION
-        session_begin();
     ?>
 
     <!-- LINK: STYLES.CSS -->
-    <link rel="stylesheet" href="./css/styles.css" type="text/css">
+    <link href='./../assets/backend/css/styles.css' rel='stylesheet' type='text/css'>
+    <!-- LINK: BOXICONS -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
 <body>
-    
+    <?php include_once('./views/login.php') ?>
+
 </body>
 
 </html>

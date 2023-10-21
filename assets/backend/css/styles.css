@@ -73,7 +73,7 @@
 
 .login-link {
   background-color: #4DAA7B;
-  background-image: url("car.png");
+  background-image: url("./../img/car.png");
   background-size: cover;
   background-repeat: no-repeat;
   border-top-left-radius: 6px;

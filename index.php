@@ -73,6 +73,9 @@
                 default:
             }
         }
+        else {
+            include_once($FRONTEND['DIR_VIEWS'] . 'home.php');
+        }
     ?>
 
     <!-- INCLUDE: FOOTER.PHP-->

@@ -26,9 +26,9 @@
         // INCLUDE: DB_QUERY.PHP
         include_once($ASSETS['DIR_DATABASE'] . 'db_query.php');
         // INCLUDE: SS_START.PHP
-        include_once($ASSETS['DIR_BACKEND'] . 'session' . DS . 'ss_start.php');
+        include_once($BACKEND['DIR_SESSION'] . 'ss_start.php');
         // INCLUDE: SS_CLOSE.PHP
-        include_once($ASSETS['DIR_BACKEND'] . 'session' . DS . 'ss_close.php');
+        include_once($BACKEND['DIR_SESSION'] . 'ss_close.php');
         // CALL: SESSION_BEGIN() => CHECK SESSION IS CREATED AND START SESSION
         session_begin();
     ?>

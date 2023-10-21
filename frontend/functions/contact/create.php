@@ -8,7 +8,7 @@
         // SHORTHAND: ASSETS PATH ==> DIR_ASSETS
         define('DIR_ASSETS', $_SERVER['DOCUMENT_ROOT'] . DS . project . DS . 'assets');
         // INCLUDE: CONFIG.PHP
-        include_once(dirname(__DIR__) . '/../config/config.php');
+        include_once(DIR_ASSETS . DS . 'config' . DS . 'config.php');
         // INCLUDE: DB_CONNECT.PHP
         include_once(DIR_ASSETS . DS . 'database' . DS . 'db_connect.php');
         // INCLUDE: DB_QUERY.PHP

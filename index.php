@@ -9,7 +9,7 @@
     <title>MAITHUY COFFEE</title>
 
     <?php
-        // SHORTHAND: PROJECT NAME == maithuy
+        // SHORTHAND: PROJECT NAME ==> maithuy
         define('project', 'maithuy');
         // SHORTHAND: DIRECTORY_SEPARATOR => DS
         define('DS', DIRECTORY_SEPARATOR);
@@ -32,7 +32,6 @@
         // CALL: SESSION_BEGIN() => CHECK SESSION IS CREATED AND START SESSION
         session_begin();
     ?>
-
     <!-- LINK: STYLES.CSS -->
     <link rel="stylesheet" href="./assets/frontend/css/styles.css" type="text/css">
     <!-- LINK: BOXICONS CSS -->

@@ -12,7 +12,6 @@
         // SHORTHAND: PROJECT NAME == maithuy
         define('project', 'maithuy');
         // SHORTHAND: DIRECTORY_SEPARATOR => DS
-        // const DS = DIRECTORY_SEPARATOR;
         define('DS', DIRECTORY_SEPARATOR);
         // SHORTHAND: ASSETS FOLDER PATH => DIR_ASSETS
         define('DIR_ASSETS', realpath(dirname(__FILE__) . '/assets/'));

@@ -1,5 +1,6 @@
 <?php
-    // Connect database with object-oriented
+    // include_once(realpath(dirname(__FILE__) . '/../config/config.php'));
+
     define('db_host', $DATABASE['host']);
     define('db_user', $DATABASE['username']);
     define('db_pw', $DATABASE['password']);

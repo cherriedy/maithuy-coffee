@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Document</title>
+    <title>Login</title>
 
     <?php
         // SHORTHAND: PROJECT NAME ==> maithuy
@@ -22,10 +22,13 @@
         // INCLUDE: DB_QUERY.PHP
         include_once($ASSETS['DIR_DATABASE'] . 'db_query.php');
     ?>
+
+    <!-- LINK: STYLES.CSS -->
+    <link rel="stylesheet" href="./css/styles.css" type="text/css">
 </head>
 
 <body>
-
+    
 </body>
 
 </html>

@@ -1,0 +1,68 @@
+.login-form-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5% 0;
+
+    .text-fields {
+        margin-bottom: 4%;
+        width: 60%;
+    }
+
+    input[type=submit] {
+        width: 45%;
+        background-color: $primary-color;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        color: #fff;
+        font-size: 1rem;
+        font-weight: 500;
+        padding: 2%;
+        margin: 0 4%;
+        border-radius: 4px;
+        transition: box-shadow .2s;
+
+        &:hover {
+            background-color: $second-color;
+        }
+
+        &:active {
+            scale: .95;
+        }
+    }
+
+    .login-function-buttons {
+        width: 60%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1.5rem;
+
+        .login-rememberMe-checkbox {
+            width: 100%;
+            color: #84848d;
+
+            input[type=checkbox] {
+                accent-color: $primary-color;
+                margin-right: .5em;
+
+                &:checked {
+                    accent-color: $primary-color;
+
+                    & ~ label {
+                        color: $primary-color;
+                    }
+                }
+            }
+        }
+
+        a {
+            color: $primary-color;
+            width: 100%;
+            text-align: end;
+        }
+    }
+}

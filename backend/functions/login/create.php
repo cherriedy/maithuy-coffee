@@ -33,6 +33,7 @@
             } 
             else {
                 echo "<script>alert('Đã đăng nhập' !);</script>";
+                // header('location: ../../../index.php');
             }
 
             if (isset($_SESSION['count'])) {
@@ -58,18 +59,19 @@
             $sql_query_result = db_query($conn, $sql_select_all_user);
 
             // CHECK: THE NUMBER OF ROWS
-            if (db_fetch_assoc($sql_query_result)->num_rows > 0) {
+            if ($sql_query_result->num_rows > 0) {
                 // SAVE USER'S EMAIL INTO SESSION
                 $_SESSION['email_logged'] = $email;
-                // NOTIFICATION: SUCCEEED
-                echo "<script>alert('Đăng nhập thành công !');</script>";
+                // NOTIFICATION: SUCCEEED (FOR DEBUG)
+                // echo "<script>alert('Đăng nhập thành công !');</script>";
+
                 // RETURN: PUBLIC INDEX.PHP
-                header('location: ../index.php');
+                header('location: ../../../index.php');
             }
             else {
                 // NOTIFICATION: FAILED
                 echo "<script>alert('Đăng nhập thất bại !');</script>";
-                // RETURN: LOGIN PAGE
+                // RETURN: BACK TO LOGIN SECTION
                 echo "<script>window.history.back()</script>";
             }
         }

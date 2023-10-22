@@ -34,7 +34,23 @@
 </head>
 
 <body>
-    <?php include_once('./views/login.php') ?>
+    <?php
+        if (isset($_GET['page'])) {
+            $page = $_GET['page'];
+            switch($page) {
+                case "login":
+                    include_once(realpath(dirname(__FILE__) . '/views/login.php'));
+                    break;
+
+                case "register":
+                    include_once(realpath(dirname(__FILE__) . '/views/register.php'));
+                    break;
+            }
+        }
+        else {
+            include_once(realpath(dirname(__FILE__) . '/views/login.php'));
+        }
+    ?>
 
 </body>
 

@@ -4,13 +4,13 @@
         <div class="login-link">
             <!-- Logo section -->
             <div class="logo">
-                <i class="bx bx-pencil"></i>
-                <span class="text">Car rental</span>
+                <!-- <i class="bx bx-pencil"></i> -->
+                <span class="text">MAITHUY Coffee</span>
             </div>
             <!-- Login text section -->
             <p class="side-big-heading">Tạo tài khoản</p>
             <p class="side-small-pragraph">Để trải nghiệm dịch vụ đặt xe nhanh chóng và tiện lợi ngay hôm nay !</p>
-            <a href="index.php?page=2" class="login-btn">Đăng kí ngay</a>
+            <a href="index.php?page=register" class="login-btn">Đăng kí ngay</a>
         </div>
 
         <!-- Form section for sign up -->

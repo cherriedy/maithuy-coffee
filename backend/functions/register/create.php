@@ -33,14 +33,32 @@
                 echo "<script>alert('Mật khẩu không trùng khớp !')</script>";
                 echo "<script>window.history.back()</script>";
             }
+            else {
+                // ENCRYPTION: PASSWORD
+                $password = md5($password);
+            }
 
-            // DEFINE: USER TYPE ==> KHACHHANG
-            define('usertype', 'KHACHHANG');
+            // VARIABLE: USER TYPE ==> KHACHHANG
+            $usertype = 'KHACHHANG';
 
             // DATABASE: GET TABLE
             $tb_user = $TABLE['nd'];
+            // DATABSE: CONNECT
+            $conn = db_connect();
             // DATABASE: SQL STATEMENT
-            $sql_insert_into_user = "INSERT INTO $tb_user VALUE('test', usertype, '$name', '$password', '')";
+            $sql_insert_into_user = "INSERT INTO $tb_user VALUE('test', '$usertype', '$name', '$password', '$email', '$phone')";
+            // DATABASE: SQL QUERY
+            if (db_query($conn, $sql_insert_into_user)) {
+                // NOTIFICATION: SUCCEEDED
+                echo "<script>alert('Đăng kí thành công !');</script>";
+                // RETURN: PUBLIC INDEX.PHP
+                header('location: ../../index.php');
+            }
+            else {
+                // NOTIFICATION: FAILED
+                echo "<script>alert('Đăng kí tb !');</script>";
+            }
+
         }
     }
 ?>

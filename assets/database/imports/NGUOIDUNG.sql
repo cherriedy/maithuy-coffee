@@ -1,0 +1,16 @@
+INSERT INTO NGUOIDUNG
+VALUES	        ('ND001', 'KHACHHANG', 'hohuyyy', '123456', 'hohuy@gmail.com', '0965481234'),
+	            ('ND002', 'KHACHHANG', 'huyhoang', '45666', 'hoang@gmail.com', '0932651498'),
+                ('ND003', 'KHACHHANG', 'huy', '126786', 'huy@gmail.com', '0932214565' ),
+                ('ND004', 'KHACHHANG', 'mquan', '453126', 'quan@gmail.com', '0956453212'),
+                ('ND005', 'KHACHHANG', 'ngthanh', '123789', 'thanh@gmail.com', '0978894556'),
+                ('ND006', 'KHACHHANG', 'lebao', '789456', 'bao@gmail.com', '0956231462'),
+                ('ND007', 'KHACHHANG', 'lannn', '111123', 'lan@gmail.com', '0962323551'),
+                ('ND008', 'KHACHHANG', 'long', '321111', 'long@gmail.com', '0997643119'),
+                ('ND009', 'KHACHHANG', 'ngnhat', '789999', 'nhat@gmail.com', '0946131616'),
+                ('ND010', 'KHACHHANG', 'hatran', '456456', 'hatran@gmail.com', '0998653232'),
+                ('QL001', 'ADMIN', 'adminnn', '7899999', 'storemth@gmail.com', '0945321589'),
+                ('NV001', 'NHANVIEN', 'trquan', '895256', 'tran@gmail.com', '0962539879'),
+                ('NV002', 'NHANVIEN', 'trhoang', ' 453225 ', 'trhoang@gmail.com', '0915324965'),
+                ('NV003', 'NHANVIEN', 'giahuy', '498526' ,'jerry@gmail.com' ,'0995291346'),
+                ('NV004', 'NHANVIEN', 'taam', '756336', 'tom@gmail.com', '0979461362');

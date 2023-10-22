@@ -1,0 +1,179 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,500&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  font-family: "Manrope", sans-serif;
+  box-sizing: border-box;
+}
+
+.section-p1 {
+  padding: 0 4%;
+}
+
+.cart-wrapper {
+  width: 100%;
+  min-height: 100vh;
+}
+.cart-wrapper .navbar {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.cart-wrapper .navbar h1 {
+  font-weight: 900;
+  color: #002D3B;
+  text-transform: uppercase;
+}
+.cart-wrapper .cart-icon {
+  position: relative;
+  z-index: 1;
+}
+.cart-wrapper .cart-icon i {
+  color: #002D3B;
+  font-size: 50px;
+}
+.cart-wrapper .cart-icon .total {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #fff;
+  font-size: 15px;
+  background-color: #002D3B;
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translate(5px);
+}
+
+.product-list {
+  width: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  margin: 40px 9%;
+  justify-content: space-between;
+}
+.product-list .product-card {
+  width: 350px;
+  height: auto;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid #d2d2d2;
+  border-radius: 12px;
+  gap: 21px;
+}
+.product-list .product-card .img-wrapper img {
+  width: 100%;
+  height: 320px;
+  border-radius: 12px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border: 0.1px solid #d2d2d2;
+  transition: all 0.2s ease 0s;
+  cursor: pointer;
+}
+.product-list .product-card .img-wrapper img:hover {
+  scale: 0.98;
+}
+.product-list .product-card .product-des .product-des-tag {
+  display: flex;
+  gap: 10px;
+  margin: 0 10px 10px 0;
+}
+.product-list .product-card .product-des .product-des-tag .product-type,
+.product-list .product-card .product-des .product-des-tag .product-group {
+  color: #262626;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 8px;
+  border-radius: 100px;
+}
+.product-list .product-card .product-des .product-des-tag .product-type {
+  background-color: #eef7ff;
+}
+.product-list .product-card .product-des .product-des-tag .product-group {
+  background-color: #fce0d3;
+}
+.product-list .product-card .product-des .product-des-brand {
+  display: flex;
+}
+.product-list .product-card .product-des .product-des-brand span {
+  display: flex;
+  font-size: 10px;
+  font-weight: 900;
+}
+.product-list .product-card .product-des .product-des-name {
+  color: #000;
+  font-size: 18px;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+.product-list .product-card .product-des .product-des-add {
+  display: flex;
+  align-items: center;
+}
+.product-list .product-card .product-des .product-des-add i {
+  font-size: 15px;
+  margin-right: 5px;
+}
+.product-list .product-card .product-des .product-des-add span {
+  color: #767676;
+  font-size: 12px;
+  font-weight: 500;
+}
+.product-list .product-card .product-des .horizontal-line {
+  background-color: #e0e0e0;
+  width: 100%;
+  height: 0.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 8px 0;
+}
+.product-list .product-card .product-des .product-des-price-buy {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.product-list .product-card .product-des .product-des-price-buy .price {
+  display: flex;
+  flex-direction: column;
+}
+.product-list .product-card .product-des .product-des-price-buy .price .original {
+  color: #002D3B;
+  font-size: 16px;
+  font-weight: 900;
+}
+.product-list .product-card .product-des .product-des-price-buy .price .discount {
+  color: #aaa;
+  font-size: 12px;
+}
+.product-list .product-card .product-des .product-des-price-buy .price .discount span {
+  font-size: 14px;
+  font-weight: 600;
+}
+.product-list .product-card .product-des .product-des-price-buy i {
+  color: #fff;
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 50%;
+  background-color: #002D3B;
+  cursor: pointer;
+  transition: all 0.2s ease 0s;
+}
+.product-list .product-card .product-des .product-des-price-buy i:hover {
+  border: 1px solid #002D3B;
+  color: #002D3B;
+  background-color: #fff;
+}
+.product-list .product-card .product-des .product-des-price-buy i:active {
+  scale: 0.95;
+}

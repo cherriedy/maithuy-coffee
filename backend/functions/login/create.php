@@ -21,6 +21,11 @@
     include_once($BACKEND['DIR_SESSION'] . 'ss_close.php');
     
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
+        // POST: GET EMAIL AND PASSWORD
+        $email = $_POST['email'];
+        // $password = md5($_POST['password']);
+        $password = $_POST['password'];
+
         if (isset($_POST['sign-in-btn'])) {
             // CHECK: SESSION IS STARTED ?
             if (session_id() == '') {
@@ -31,9 +36,10 @@
                     'cookie_httponly' => 1
                 ]);
             } 
-            else {
+            elseif (isset($_SESSION['email_logged']) && $_SESSION['email_logged'] == $email) {
                 echo "<script>alert('Đã đăng nhập' !);</script>";
                 // header('location: ../../../index.php');
+                exit();
             }
 
             if (isset($_SESSION['count'])) {
@@ -43,9 +49,6 @@
                 $_SESSION['count'] = 1;
             }
 
-            // POST: GET EMAIL AND PASSWORD
-            $email = $_POST['email'];
-            $password = $_POST['password'];
 
             // DATABASE: GET TABLE
             $tb_user = $TABLE['nd'];
@@ -55,16 +58,16 @@
             $sql_select_all_user = "SELECT * 
                                     FROM $tb_user 
                                     WHERE EMAIL = '$email' AND MK_ND = '$password' ";
+                                    // WHERE email = '$email' AND mk_nd = '$password' ";
             // DATABASE: SQL QUERY
             $sql_query_result = db_query($conn, $sql_select_all_user);
 
             // CHECK: THE NUMBER OF ROWS
-            if ($sql_query_result->num_rows > 0) {
+            if ($sql_query_result->num_rows == 1) {
                 // SAVE USER'S EMAIL INTO SESSION
                 $_SESSION['email_logged'] = $email;
                 // NOTIFICATION: SUCCEEED (FOR DEBUG)
-                // echo "<script>alert('Đăng nhập thành công !');</script>";
-
+                echo "<script>alert('Đăng nhập thành công !')</script>";
                 // RETURN: PUBLIC INDEX.PHP
                 header('location: ../../../index.php');
             }

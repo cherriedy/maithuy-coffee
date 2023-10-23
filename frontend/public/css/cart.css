@@ -110,6 +110,7 @@
   font-weight: 900;
 }
 .product-list .product-card .product-des .product-des-name {
+  text-overflow: ellipsis;
   color: #000;
   font-size: 18px;
   font-weight: 900;
@@ -120,7 +121,8 @@
   display: flex;
   align-items: center;
 }
-.product-list .product-card .product-des .product-des-add i, .product-list .product-card .product-des .product-des-add span {
+.product-list .product-card .product-des .product-des-add i,
+.product-list .product-card .product-des .product-des-add span {
   color: #767676;
 }
 .product-list .product-card .product-des .product-des-add i {
@@ -162,7 +164,12 @@
   font-size: 14px;
   font-weight: 600;
 }
-.product-list .product-card .product-des .product-des-price-buy i {
+.product-list .product-card .product-des .product-des-price-buy button {
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
+.product-list .product-card .product-des .product-des-price-buy button i {
   color: #fff;
   font-size: 16px;
   padding: 10px;
@@ -171,11 +178,11 @@
   cursor: pointer;
   transition: all 0.2s ease 0s;
 }
-.product-list .product-card .product-des .product-des-price-buy i:hover {
+.product-list .product-card .product-des .product-des-price-buy button i:hover {
   border: 1px solid #002D3B;
   color: #002D3B;
   background-color: #fff;
 }
-.product-list .product-card .product-des .product-des-price-buy i:active {
+.product-list .product-card .product-des .product-des-price-buy button i:active {
   scale: 0.95;
 }

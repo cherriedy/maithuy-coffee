@@ -90,7 +90,7 @@ $primary-color: #002D3B;
                 transition: all .2s ease 0s;
                 cursor: pointer;
 
-                &:hover {
+                &:active {
                     scale: .98;
                 }
             }
@@ -142,13 +142,16 @@ $primary-color: #002D3B;
                 display: flex;
                 align-items: center;
 
+                i, span {
+                    color: #767676;
+                }
+
                 i {
                     font-size: 15px;
                     margin-right: 5px;
                 }
 
                 span {
-                    color: #767676;
                     font-size: 12px;
                     font-weight: 500;
                 }

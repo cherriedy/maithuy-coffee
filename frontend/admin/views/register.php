@@ -50,12 +50,12 @@
                     <div class="button-wrapper">
                         <div class="text-fields fname">
                             <label for="fname"><i class='bx bx-user'></i></label>
-                            <input type="text" name="fname" id="fname" placeholder="Nguyễn" required>
+                            <input type="text" name="fname" id="fname" placeholder="Hồ Đình" required>
                         </div>
 
                         <div class="text-fields lname">
                             <label for="lname"><i class='bx bx-user'></i></label>
-                            <input type="text" name="lname" id="lname" placeholder="Lê Thuỳ Linh" required>
+                            <input type="text" name="lname" id="lname" placeholder="Huy" required>
                         </div>
                     </div>
 

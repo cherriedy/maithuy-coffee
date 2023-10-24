@@ -14,7 +14,7 @@
         </div>
 
         <!-- Form section for sign up -->
-        <form action="./functions/login/create.php" method="post" class="login-form-wrapper">
+        <form action="./../../../backend/admin/login/create.php" method="post" class="login-form-wrapper">
             <p class="big-heading">Đăng nhập tài khoản</p>
             <div class="social-link-btn">
                 <a href="#"><i class="bx bxl-facebook facebook"></i></a>

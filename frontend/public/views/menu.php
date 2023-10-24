@@ -10,7 +10,7 @@
             <li><a href="index.php?page=4">Liên Hệ</a></li>
         </ul>
         <!-- <img src="./assets/frontend/img/layout/icons/list.png" alt="list" class="list" > -->
-        <a href="#"><i class='bx bxs-user-detail list' style="color: #000; font-size: 2rem; position: fixed; top: 3.5%; right: 50px"></i></a>
+        <a href="./frontend/admin/views/index.php"><i class='bx bxs-user-detail list' style="color: #000; font-size: 2rem; position: fixed; top: 3.5%; right: 50px"></i></a>
     </div>
 
 </header>

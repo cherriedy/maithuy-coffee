@@ -1,0 +1,32 @@
+@use '../abstracts/' as *;
+
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style-type: none;
+    box-sizing: border-box;
+    font-family: $font-family-roboto;
+}
+
+body {
+    background-color: $bg-color;
+}
+
+
+div::-webkit-scrollbar {
+    width: 1em;
+    height: 6px;
+}
+ 
+div::-webkit-scrollbar-thumb {
+    background-color: $main-color;
+    border-radius: 3px;
+}
+
+#content-wrapper {
+    width: calc(100% - 280px);
+    height: 100%;
+    margin-left: 280px;
+    background-color: #f3f3f3;
+}

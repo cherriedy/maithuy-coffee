@@ -1,0 +1,110 @@
+@use '../abstracts/'as *;
+
+.navigation {
+    .sidebar-menu {
+        width: 280px;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: $main-color;
+        color: #fff;
+
+        .img-wrapper {
+            img {
+                margin: 2rem;
+                width: 200px;
+            }
+        }
+
+        ul {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+
+            li {
+                width: 100%;
+                margin-bottom: 1.7rem;
+                padding-left: 1rem;
+
+                a {
+                    color: #fff;
+                    display: block;
+                    font-size: 1.2rem;
+                    padding-left: 1rem;
+
+                    &.active {
+                        display: flex;
+                        align-items: center;
+                        color: $main-color;
+                        font-weight: 700;
+                        background-color: #fff;
+                        padding: 1rem 0;
+                        border-radius: 30px 0 0 30px;
+
+                        i {
+                            font-size: 1.5rem;
+                            padding: 0 1rem;
+                        }
+                    }
+
+
+                }
+            }
+        }
+    }
+
+    .topbar-menu {
+        width: calc(100% - 280px);
+        height: 85px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem;
+        // position: relative;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        margin-left: 280px;
+        // box-shadow: 4px 4px 10px $topbar-shadow-color;
+        background-color: #fff;
+
+        .topbar-search {
+            border: 1px solid #f0f0f0;
+            border-radius: 30px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            overflow-x: hidden;
+
+            i {
+                font-size: 1.1rem;
+                display: inline-block;
+                padding: 0 1rem;
+            }
+
+            input {
+                height: 100%;
+                border: none;
+                outline: none;
+                padding: .5rem;
+            }
+        }
+
+        .topbar-user {
+            display: flex;
+            align-items: center;
+
+            img {
+                border-radius: 50%;
+                margin-right: .5rem;
+            }
+
+            small {
+                display: inline-block;
+                color: #4a5568;
+            }
+        }
+    }
+}

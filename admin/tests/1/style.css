@@ -1,0 +1,78 @@
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@600;700;800&family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+  color: #002D3B;
+  text-decoration: none;
+}
+
+.content-wrapper {
+  width: calc(100% - 280px);
+  height: 100%;
+  margin-left: 280px;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  background-color: #f3f3f3;
+}
+
+.table-wrapper .table-header {
+  width: 100%;
+  height: 85px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  background-color: #fff;
+}
+.table-wrapper .table-header .button {
+  padding: 12px 16px;
+  border-radius: 5px;
+  background-color: #002D3B;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.table-wrapper .table-card {
+  width: auto;
+}
+.table-wrapper .table-card table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+}
+.table-wrapper .table-card th {
+  height: 50px;
+}
+.table-wrapper .table-card td {
+  min-width: -webkit-max-content;
+  min-width: -moz-max-content;
+  min-width: max-content;
+  height: 85px;
+}
+.table-wrapper .table-card td.option i {
+  color: #002D3B;
+  font-size: 1.5rem;
+  margin-right: 16px;
+}
+.table-wrapper .table-card .odd td,
+.table-wrapper .table-card .odd th {
+  background-color: #f3f3f3;
+}
+.table-wrapper .table-card .odd td:first-child,
+.table-wrapper .table-card .odd th:first-child {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.table-wrapper .table-card .odd td:last-child,
+.table-wrapper .table-card .odd th:last-child {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.table-wrapper .table-card .even td,
+.table-wrapper .table-card .even th {
+  background-color: #fff;
+}

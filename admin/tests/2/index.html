@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ajax</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- <script>
+        $(document).ready(function() {
+            $("#btn").click(function() {
+                $.get("text.txt", function(data, status) {
+                    $("#test").html(data);
+                    alert(status);
+                });
+            });
+        });
+    </script> -->
+
+    <script>
+        $(document).ready(function() {
+            $("input").keyup(function() {
+                var name = $("input").val();
+                $.post("suggestion.php", {
+                        suggestion: name
+                    },
+                    function(data, status) {
+                        $("#test").html(data);
+                        alert(status);
+                    });
+            });
+        });
+    </script>
+
+</head>
+
+<body>
+    <!-- <section id="test">
+        Nothing in here
+    </section>
+    <button id="btn">Get data here !</button> -->
+
+    <input type="text" name="name" placeholder="Nhap ten">
+    <section id="test"></section>
+</body>
+
+</html>

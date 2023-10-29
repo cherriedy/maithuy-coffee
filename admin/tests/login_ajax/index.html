@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $("#login-form").submit(function(e) {
+                e.preventDefault();
+                let username = $('input[name=username]');
+                let password = $('input[name=password]');
+                let data = '{username: username, password: password};'
+
+                $.ajax({
+                    type: 'post',
+                    url: 'login.php',
+                    data: data,
+                    success: function(respond) {
+                         
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <form id="login-form">
+        <input type="text" name="username"> 
+        <input type="password" name="password">
+        <p class="notifi"></p>
+        <button type="submit" name="submit-btn">Gui</button>
+    </form>
+
+
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <link href="style.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        // $(document).ready(function () {
+        //     $("form").submit(function(event) {
+        //         event.preventDefault();
+        //         let name = $("#contact-name").val();
+        //         let phone = $("#contact-phone").val();
+        //         let email = $("#contact-email").val();
+        //         let address = $("#contact-address").val();
+        //         let content = $("#contact-content").val();
+        //         $(".submit-notification").load("contact.php", {
+        //             name: name,
+        //             phone: phone,
+        //             email: email,
+        //             address: address,
+        //             content: content
+        //         });
+        //     });
+        // });
+
+        $(document).ready(function() {
+            $("#contact-form").submit(function(e) {
+                e.preventDefault();
+
+                // let name = $('input[name=name]').val();
+                // let phone = $('input[name=phone]').val();
+                // let email = $('input[name=email]').val();
+                // let address = $('input[name=address]').val();
+                // let content = $('textarea[name=content]').val();
+                let name = $("#contact-name").val();
+                let phone = $("#contact-phone").val();
+                let email = $("#contact-email").val();
+                let address = $("#contact-address").val();
+                let content = $("#contact-content").val();
+
+                $.ajax({
+                    url: 'http://127.0.0.1:5500/tests/contact_ajax/contact.php',
+                    type: 'get',
+                    data: {
+                        name: name,
+                        phone: phone,
+                        email: email,
+                        address: address,
+                        content: content
+                    },
+                    dataType: 'html',
+                    success: function(respond) {
+                        $(".submit-notification").html(respond);
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <section id="contact">
+        <h1>Liên hệ với chúng tôi</h1>
+        <p>Chúng tôi luôn sẵn lòng hồi đáp lại phản hồi của bạn khi có thể !</p>
+        <div class="contact-box">
+            <div class="contact-box-left">
+                <h3 style="color: #002B3D;">Nhập thông tin</h3>
+                <form id="contact-form" method="" action="">
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label>Họ và tên</label>
+                            <input type="text" placeholder="Nhập tên của bạn" name="name" id="contact-name">
+                        </div>
+
+                        <div class="input-group">
+                            <label>Số điện thoại</label>
+                            <input type="text" placeholder="(+84) 816232452" name="phone" id="contact-phone">
+                        </div>
+
+                        <div class="input-group">
+                            <label>Email</label>
+                            <input type="text" placeholder="lienhe@maithuycoffee.vn" name="email" id="contact-email">
+                        </div>
+
+                        <div class="input-group">
+                            <label>Địa chỉ</label>
+                            <input type="text" placeholder="Việt Nam" name="address" id="contact-address">
+                        </div>
+                    </div>
+
+                    <label>Nội dung</label>
+                    <textarea rows="5" placeholder="Nội dung của bạn" name="content" id="contact-content"></textarea>
+                    <h1 class="submit-notification"></h1>
+                    <input type="submit" value="GỬI" class="submit" name="submit-btn">
+                </form>
+            </div>
+
+            <div class="contact-box-right">
+                <h4>Thông tin về chúng tôi</h4>
+                <h3 style="font-size: 30px;">MAITHUY COFFEE</h3>
+                <table>
+                    <tr>
+                        <td><i class="fa-solid fa-envelope"></i>Email</td>
+                        <td>lienhe@maithuycoffee.vn</td>
+                    </tr>
+
+                    <tr>
+                        <td><i class="fa-solid fa-phone"></i>Số điện thoại</td>
+                        <td>(+84) 816232452</td>
+                    </tr>
+
+                    <tr>
+                        <td><i class="fa-solid fa-location-dot"></i>Địa chỉ</td>
+                        <td>34 Đ. An Bình, Phường 6, Quận 5, Thành phố Hồ Chí Minh</td>
+                    </tr>
+
+                    <tr>
+                        <td><i class="fa-solid fa-globe"></i>Website</td>
+                        <td>www.maithuycoffee.vn</td>
+                    </tr>
+
+                    <tr>
+                        <td><i class="fa-brands fa-facebook"></i>Facebook</td>
+                        <td>Cà phê MAITHUY</td>
+                    </tr>
+
+
+                    <tr>
+                        <td><i class="fa-brands fa-instagram"></i>Instagram</td>
+                        <td>@_maithuyCoffee</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <section class="map">
+            <h1 style="text-align: center;">Bản đồ vị trí</h1>
+            <p style="text-align: center;">Xác định vị trí cửa hàng chúng tôi nhanh chóng</p>
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62708.61278617321!2d106.65666696476741!3d10.789217076106567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752efef82dcfcd%3A0x523550c70a8c31ea!2zQ0FUUCBQaMOybmcgQ-G6o25oIFPDoXQgxJBp4buBdSBUcmEgVOG7mWkgUGjhuqFtIFbhu4EgTWEgVMO6eQ!5e0!3m2!1svi!2s!4v1696740212187!5m2!1svi!2s"
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </section>
+    </section>
+</body>
+
+</html>

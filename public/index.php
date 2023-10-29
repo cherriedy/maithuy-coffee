@@ -26,7 +26,7 @@
 
 <body>
     <!-- INCLUDE: MENU.PHP -->
-    <?php include_once(realpath(dirname(__FILE__)) . DS . 'pages/new_menu.php')?>
+    <?php include_once(realpath(dirname(__FILE__)) . DS . 'layout/navigation.php')?>
 
     <!-- CONTROLLER: NAVIGATION -->
     <?php 
@@ -38,7 +38,7 @@
             // CASE 4: CONTACT.PHP
             switch($page) {
                 case 1: 
-                    include_once(DIR_FRONTEND . DS . 'home.php');
+                    include_once( . DS . 'home.php');
                     break;
 
                 case 2:

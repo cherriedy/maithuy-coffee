@@ -16,17 +16,16 @@
     <title>MAITHUY COFFEE</title>
 
     <!-- LINK: STYLES.CSS -->
-    <link rel="stylesheet" href="./css/styles.css" type="text/css">
+    <link rel="stylesheet" href="./css/style.css" type="text/css">
     <!-- LINK: BOXICONS CSS -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet' type="text/css">
     <!-- LINK: SWIPER CSS -->
-    <link href="./assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" type="text/css">
+    <link href="./../vendor/swiper/swiper-bundle.min.css" rel="stylesheet" type="text/css">
 
 </head>
 
 <body>
     <!-- INCLUDE: MENU.PHP -->
-    <?php include_once(realpath(dirname(__FILE__)) . DS . 'layout/navigation.php')?>
 
     <!-- CONTROLLER: NAVIGATION -->
     <?php 
@@ -37,13 +36,12 @@
             // CASE 3: PRODUCT.PHP
             // CASE 4: CONTACT.PHP
             switch($page) {
-                case 1: 
-                    include_once(realpath(dirname(__FILE__)) . DS . 'pages/homepage.php');
-                    break;
+                // case 1: 
+                //     break;
 
-                case 2:
-                    include_once(realpath(dirname(__FILE__)) . DS . 'pages/about.php');
-                    break;
+                // case 2:
+                //     include_once(realpath(dirname(__FILE__)) . DS . 'pages/about.php');
+                //     break;
 
                 case 3:
                     include_once(realpath(dirname(__FILE__)) . DS . 'pages/product.php');
@@ -52,24 +50,27 @@
                 case 4:
                     include_once(realpath(dirname(__FILE__)) . DS . 'pages/contact.php');
                     break;
-                
+
                 case 5:
-                    include_once(realpath(dirname(__FILE__)) . DS . 'pages/register.php');
+                    include_once(realpath(dirname(__FILE__)) . DS . 'pages/login.php');
                     break;
 
                 case 6:
-                    include_once(realpath(dirname(__FILE__)) . DS . 'pages/login.php');
+                    include_once(realpath(dirname(__FILE__)) . DS . 'pages/register.php');
                     break;
                 default:
             }
+
+            // INCLUDE: FOOTER.PHP
+            if ($page != 5 || $page != 6) {
+                include_once(realpath(dirname(__FILE__)) . DS . 'layout/footer.php');
+            }
         }
         else {
-            include_once(DIR_FRONTEND . DS . 'home.php');
+            include_once(realpath(dirname(__FILE__)) . DS . 'pages/homepage.php');
         }
-    ?>
 
-    <!-- INCLUDE: FOOTER.PHP-->
-    <?php include_once(DIR_FRONTEND . DS . 'new_footer.php')?>
+    ?>
 
     <!-- SCRIPT: FONTAWESOME-->
     <script src="https://kit.fontawesome.com/7c9a6eab84.js" crossorigin="anonymous"></script>
@@ -78,13 +79,16 @@
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
 
     <!-- SCRIPT: SWIPER -->
-    <script src="./assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="./../vendor/swiper/swiper-bundle.min.js"></script>
 
     <!-- SCRIPT: SCROLL REVEAL -->
-    <script src="./assets/vendor/scrollreveal/scrollreveal.js"></script>
+    <script src="./../vendor/scrollreveal/scrollreveal.js"></script>
     
+    <!-- SCRIPT: JQUERY -->
+    <script src="./../vendor/jquery/jquery-3.7.1.min.js"></script>
+
     <!-- SCRIPT: GENERAL -->
-    <script src="./assets/frontend/js/scripts.js"></script>
+    <script src="./js/scripts.js"></script>
 
 </body>
 

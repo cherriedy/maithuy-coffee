@@ -1,4 +1,4 @@
-<section id="banner" class="section-p1">
+<!-- <section id="banner" class="section-p1">
     <h2>moring</h2>
     <h2>coffee</h2>
     <p>Wake Up and Smell the Coffee! and Start Your Morning Right with a Cup of Delicious Coffee!</p>
@@ -8,10 +8,44 @@
         <button class="normal"><a href="#">Giảm 75%</a></button>
     </div>
 </section>
+ -->
+<section class="navigation-wrapper">
+    <header>
+        <div class="navigation-content">
+            <div class="img-wrapper">
+                <a href="index.php">
+                    <img src="./img/logo_3.png" alt="">
+                </a>
+            </div>
 
+            <ul>
+                <li class="active"><a href="index.php">Trang chủ</a></li>
+                <div class="vertical-line"></div>
+                <li><a href="index.php?page=3">Sản phẩm</a></li>
+                <div class="vertical-line"></div>
+                <li><a href="#">Liên hệ</a></li>
+                <div class="vertical-line transparent"></div>
+                <!-- <li><a href="./pages/login.php">Đăng nhập</a></li> -->
+                <li><a href="index.php?page=5">Đăng nhập</a></li>
+            </ul>
+        </div>
+        <div class="banner-content">
+            <div class="inner">
+                <h2>moring</h2>
+                <h2>coffee</h2>
+                <p>Wake Up and Smell the Coffee! and Start Your Morning Right with a Cup of Delicious Coffee!</p>
+
+                <div class="button-space">
+                    <button class="normal"><a href="#">Đặt Hàng Ngay !</a></button>
+                    <button class="normal"><a href="#">Giảm 75%</a></button>
+                </div>
+            </div>
+        </div>
+    </header>
+</section>
 
 <section id="about" class="section-p1">
-    <img src="./assets/frontend/img/layout/about.png" alt="about-pic">
+    <img src="./img/about.png" alt="about-pic">
     <div class="about-text-box">
         <!-- TEXT SECTION -->
         <div class="about-text">
@@ -34,7 +68,7 @@
         </div>
 
         <!-- BUTTON SECTION -->
-        <button class="normal">Tìm hiểu thêm</button>
+        <a href="index.php?page=2" class="btn">Tìm hiểu thêm</a>
     </div>
 </section>
 
@@ -90,4 +124,7 @@
         <div class="swiper-button-prev swiper-btn"></div>
         <div class="swiper-pagination"></div>
     </div>
+
 </section>
+
+<?php include_once(realpath(dirname(__FILE__)) . DS . '../layout/footer.php'); ?>

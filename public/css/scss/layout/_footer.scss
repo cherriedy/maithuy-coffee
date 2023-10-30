@@ -1,3 +1,5 @@
+@use '../abstracts/' as *;
+
 footer {
     border-top: 1px solid $line-color;
     padding: 40px 100px;

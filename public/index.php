@@ -38,27 +38,27 @@
             // CASE 4: CONTACT.PHP
             switch($page) {
                 case 1: 
-                    include_once( . DS . 'home.php');
+                    include_once(realpath(dirname(__FILE__)) . DS . 'pages/homepage.php');
                     break;
 
                 case 2:
-                    include_once(DIR_FRONTEND . DS . 'about.php');
+                    include_once(realpath(dirname(__FILE__)) . DS . 'pages/about.php');
                     break;
 
                 case 3:
-                    include_once(DIR_FRONTEND . DS . 'nproduct.php');
+                    include_once(realpath(dirname(__FILE__)) . DS . 'pages/product.php');
                     break;
 
                 case 4:
-                    include_once(DIR_FRONTEND . DS . 'contact.php');
+                    include_once(realpath(dirname(__FILE__)) . DS . 'pages/contact.php');
                     break;
                 
                 case 5:
-                    include_once(DIR_FRONTEND  .DS . 'register.php');
+                    include_once(realpath(dirname(__FILE__)) . DS . 'pages/register.php');
                     break;
 
                 case 6:
-                    include_once(DIR_FRONTEND  .DS . 'login.php');
+                    include_once(realpath(dirname(__FILE__)) . DS . 'pages/login.php');
                     break;
                 default:
             }

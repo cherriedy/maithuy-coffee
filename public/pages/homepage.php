@@ -23,7 +23,7 @@
                 <div class="vertical-line"></div>
                 <li><a href="index.php?page=3">Sản phẩm</a></li>
                 <div class="vertical-line"></div>
-                <li><a href="#">Liên hệ</a></li>
+                <li><a href="index.php?page=4">Liên hệ</a></li>
                 <div class="vertical-line transparent"></div>
                 <!-- <li><a href="./pages/login.php">Đăng nhập</a></li> -->
                 <li><a href="index.php?page=5">Đăng nhập</a></li>

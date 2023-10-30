@@ -1,8 +1,13 @@
 <?php
-    // SHORTHAND: PROJECT NAME ==> maithuy
-    define('project', 'maithuy');
     // SHORTHAND: DIRECTORY_SEPARATOR => DS
     define('DS', DIRECTORY_SEPARATOR);
+    // SHORTHAND: RESOURCES PATH => DIR_RESOURCE
+    define('DIR_RESOURCE', $_SERVER['DOCUMENT_ROOT'] . DS . 'maithuy' . DS . 'resources');
+    // INCLUDE: CONFIG
+    include_once(DIR_RESOURCE . DS . 'config' . DS . 'config.php');
+    // INCLUDE: DATABASE FUNCTIONS
+    include_once(DIR_RESOURCE . DS . 'database' . DS . 'connect.php');
+    include_once(DIR_RESOURCE . DS . 'database' . DS . 'query.php');
 ?>
 
 <!DOCTYPE html>
@@ -31,10 +36,7 @@
     <?php 
         if (isset($_GET["page"])) {
             $page = $_GET["page"];
-            // CASE 1: HOME.PHP
-            // CASE 2: ABOUT.PHP
-            // CASE 3: PRODUCT.PHP
-            // CASE 4: CONTACT.PHP
+            include_once(realpath(dirname(__FILE__)) . DS . 'layout/navigation.php');
             switch($page) {
                 // case 1: 
                 //     break;

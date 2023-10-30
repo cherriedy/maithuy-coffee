@@ -1,16 +1,22 @@
-<header class="section-h">
+<section class="navigation-wrapper">
+    <header class="no-banner">
+        <div class="navigation-content">
+            <div class="img-wrapper">
+                <a href="index.php">
+                    <img src="./img/logo_3.png" alt="">
+                </a>
+            </div>
 
-    <img src="./assets/frontend/img/layout/logo_3.png" alt="logo_3.png" class="logo">
-
-    <div id="main-navigation">
-        <ul>
-            <li><a class="active" href="index.php?page=1">Trang Chủ</a></li>
-            <li><a href="index.php?page=2">Giới Thiệu</a></li>
-            <li><a href="index.php?page=3">Sản Phẩm</a></li>
-            <li><a href="index.php?page=4">Liên Hệ</a></li>
-        </ul>
-        <!-- <img src="./assets/frontend/img/layout/icons/list.png" alt="list" class="list" > -->
-        <a href="./frontend/admin/views/index.php"><i class='bx bxs-user-detail list' style="color: #000; font-size: 2rem; position: fixed; top: 3.5%; right: 50px"></i></a>
-    </div>
-
-</header>
+            <ul>
+                <li class="active"><a href="index.php">Trang chủ</a></li>
+                <div class="vertical-line"></div>
+                <li><a href="index.php?page=3">Sản phẩm</a></li>
+                <div class="vertical-line"></div>
+                <li><a href="index.php?page=4">Liên hệ</a></li>
+                <div class="vertical-line transparent"></div>
+                <!-- <li><a href="./pages/login.php">Đăng nhập</a></li> -->
+                <li><a href="index.php?page=5">Đăng nhập</a></li>
+            </ul>
+        </div>
+    </header>
+</section>

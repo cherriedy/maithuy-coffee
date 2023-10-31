@@ -1,0 +1,10 @@
+
+@mixin circle-btn($width, $font-size, $font-color, $bg-color) {
+    width: $width;
+    height: $width;
+    border: none;
+    border-radius: 50%;
+    font-size: $font-size;
+    color: $font-color;
+    background-color: $bg-color;
+}

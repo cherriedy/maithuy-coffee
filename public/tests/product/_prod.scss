@@ -1,6 +1,6 @@
-@use '../../css/scss/abstracts/'as *;
-@use '../../css/scss/layout/'as *;
-@use '../../css/scss/components/'as *;
+@use '../../css/scss/abstracts/' as *;
+@use '../../css/scss/layout/' as *;
+@use '../../css/scss/components/' as *;
 
 .product-wrapper {
     width: 100%;
@@ -12,11 +12,11 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        margin-bottom: 32px;
+        margin-bottom: 80px;
 
         h1 {
-            width: 20%;
-            font-size: 2.5rem;
+            // width: 20%;
+            font-size: 2rem;
             color: $primary-color;
             text-transform: uppercase;
         }
@@ -24,9 +24,6 @@
         .product-type {
             display: flex;
             gap: 20px;
-            border: 1px solid $primary-color;
-            border-radius: 12px;
-            padding: 12px;
 
             a {
                 @include button(16px, $primary-color, transparent);
@@ -35,6 +32,8 @@
                 border-radius: 5px;
                 padding: 8px 12px;
                 text-align: center;
+                font-weight: 500;
+                text-transform: uppercase;
 
                 &:hover,
                 &.active {
@@ -47,11 +46,12 @@
     .product-content {
         width: 100%;
         display: flex;
-        flex-wrap: nowrap;
+        flex-wrap: wrap;
+        justify-content: space-between;
         gap: 20px;
 
         .product-card {
-            width: calc(100% - 15px);
+            width: calc(25% - 15px);
             // height: 350px;
             border: 1px solid #e0e0e0;
             border-radius: 12px;
@@ -84,6 +84,7 @@
                         font-size: .75rem;
                         font-weight: 500;
                         width: fit-content;
+                        text-transform: uppercase;
 
                         &.group {
                             background-color: #dff5e7;
@@ -108,11 +109,14 @@
                     color: $primary-color;
                     margin-bottom: 8px;
                     text-overflow: ellipsis;
+                    text-transform: uppercase;
                 }
 
                 .product-des__origin {
                     font-size: 12px;
                     color: grey;
+                    text-transform: capitalize;
+                    text-overflow: ellipsis;
 
                     i {
                         margin-right: 4px;
@@ -148,6 +152,27 @@
                             span {
                                 text-decoration: line-through;
                             }
+                        }
+                    }
+
+                    .buy {
+                        // @include circle-btn(20px, 14px, #fff, $primary-color);
+                        width: 20px;
+                        height: 20px;
+                        padding: 20px;
+                        border-radius: 50%;
+                        background-color: $primary-color;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        transition: all .2s ease 0s;
+                        
+                        i {
+                            color: #f0f0f0;
+                        }
+
+                        &:hover {
+                            scale: .95;
                         }
                     }
                 }

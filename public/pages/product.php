@@ -1,86 +1,119 @@
 <?php 
-    // DATABASE: CONNECT
-    $conn = db_connect();
-    // DATABASE: GET TABLE
     $tb_sp = $TABLE['sp'];
-    // DATABASE: SQL STATMENT
-    $sql_select_all_product = "SELECT TEN_NHOMSP FROM $tb_sp";
-    // DATABASE: SQL QUERY
-    $sql_query_1 = db_query($conn, $sql_select_all_product);
+    $tb_lsp = $TABLE['lsp'];
+    $tb_nsp = $TABLE['nsp'];
+
+    $conn = db_connect();
+    $sql_select_prod_type = "SELECT TEN_LOAISP FROM $tb_lsp";
+    $sql_select_prod_group = "SELECT TEN_NHOMSP FROM $tb_nsp";
+
+    $sql_query_result_1 = db_query($conn, $sql_select_prod_group);
 ?>
 
-<section id="product-page" class="section-p2">
-    <div class="top">
-        <ul>
-            <li><a href="index.php?page=3">Tất cả sản phẩm</a></li>
+<section class="product-wrapper">
+    <div class="product-header-wrapper">
+        <h1>Danh sách sản phẩm</h1>
+
+        <div class="product-type">
+            <a class="active" href="index.php?page=3">Tất cả</a>
             <?php 
-                $category = 0;
-                while ($row = db_fetch_assoc($sql_query_1)) {
-                    $ten_nsp = $row['TEN_NHOMSP']; 
+                $group = 1;
+                while ($row = db_fetch_assoc($sql_query_result_1)) 
+                {
             ?>
-            <li><a href="index.php?page=3&&category=<?php echo ++$category; ?>"><?php echo $ten_nsp; ?></a></li>
-            <?php
-            }
+            <a href="index.php?page=3&&group=<?php echo $group++; ?>"><?php echo $row['TEN_NHOMSP']; ?></a>
+            <?php 
+                }
             ?>
-        </ul>
+        </div>
     </div>
 
-    <?php 
-        if (isset($_GET['category'])) {
-            $category = $_GET['category'];
-            switch ($category) {
-                case 1:
-                    $sql_select_product = "SELECT * FROM $tb_sp WHERE MA_NHOMSP = 'N001' ";
+    <div class="product-content">
+        <?php 
+        if (isset($_GET['group'])) {
+            $group = $_GET['group'];
+
+            switch ($group) {
+                case 1: 
+                    $sql_select_prod = "SELECT * FROM $tb_sp WHERE MA_NHOMSP = 'N001'";
                     break;
-                case 2:
-                    $sql_select_product = "SELECT * FROM $tb_sp WHERE MA_NHOMSP = 'N002' ";
+
+                case 2: 
+                    $sql_select_prod = "SELECT * FROM $tb_sp WHERE MA_NHOMSP = 'N002'";
                     break;
-                case 3:
-                    $sql_select_product = "SELECT * FROM $tb_sp WHERE MA_NHOMSP = 'N003' ";
+
+                case 2: 
+                    $sql_select_prod = "SELECT * FROM $tb_sp WHERE MA_NHOMSP = 'N003'";
                     break;
-                case 4:
-                    $sql_select_product = "SELECT * FROM $tb_sp WHERE MA_NHOMSP = 'N004' ";
+
+                case 4: 
+                    $sql_select_prod = "SELECT * FROM $tb_sp WHERE MA_NHOMSP = 'N004'";
                     break;
             }
         }
         else {
-            $sql_select_product = $sql_select_all_product;
+            $sql_select_prod = "SELECT * FROM $tb_sp";
         }
 
-        $sql_query_2 = db_query($conn, $sql_select_product);
-    ?>
+        $sql_query_result_2 = db_query($conn, $sql_select_prod);
+        while ($row = db_fetch_assoc($sql_query_result_2))
+        {
+            $ma_sp = $row['MA_SP'];
+            $ma_lsp = $row['MA_LOAISP'];
+            $ma_nsp = $row['MA_NHOMSP'];
+            $ten_sp = $row['TEN_SP'];
+            $gia_sp = $row['GIA_SP'];
+            $xuat_xu = $row['XUATXU'];
+            $hinh_sp = $row['TEN_HINHSP'];
 
-    <div class="product-container">
+            $sql_select_ten_nsp = "SELECT TEN_NHOMSP FROM $tb_nsp WHERE MA_NHOMSP = '$ma_nsp'";
+            $sql_select_ten_lsp = "SELECT TEN_LOAISP FROM $tb_lsp WHERE MA_LOAISP = '$ma_lsp'";
 
-        <?php
-        while ($row = db_fetch_assoc($sql_query_2)) {
-            $hinhsp = $row["TEN_HINHSP"];
-            $tensp = $row["TEN_SP"];
-            $giasp = $row["GIA_SP"];
-            $lsp = $row["MA_LOAISP"];
+            $ten_nsp = db_fetch_assoc(db_query($conn, $sql_select_ten_nsp))['TEN_NHOMSP'];
+            $ten_lsp = db_fetch_assoc(db_query($conn, $sql_select_ten_lsp))['TEN_LOAISP'];
         ?>
+        <div class="product-card">
+            <div class="img-wrapper">
+                <img src="./img/product.png" alt="prod-img">
+            </div>
 
-        <div class="product">
-            <img src="./img/content/product.png" alt="pro-img">
             <div class="product-des">
-                <?php 
-                if ($lsp === "L001") 
-                    $ten_lsp = 'Cà Phê Bột';
-                elseif ($lsp == "L002")
-                    $ten_lsp = 'Cà Phê Hạt';
-                else
-                    $ten_lsp = 'Cà Phê Túi Lọc';
-                ?>
-                <span><?php echo $ten_lsp ?></span>
-                <p><?php echo "MAITHUY: " . $tensp; ?></p>
-                <h4><?php echo $giasp . " VNĐ"; ?></h4>
+                <div class="product-des__tag">
+                    <span class="group"><?php echo $ten_nsp; ?></span>
+                    <span class="type"><?php echo $ten_lsp; ?></span>
+                </div>
+
+                <div class="product-des__brand">
+                    <span>MAITHUY COFFEE</span>
+                </div>
+
+                <div class="product-des__name">
+                    <span><?php echo $ten_sp; ?></span>
+                </div>
+
+                <div class="product-des__origin">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span><?php echo $xuat_xu; ?></span>
+                </div>
+
+                <div class="horizontal-line"></div>
+
+                <div class="prodcut-des__price-buy">
+                    <div class="price">
+                        <?php $discount = $gia_sp - $gia_sp * .50; ?>
+                        <span class="discount"><?php echo number_format($discount, 0, '', ','); ?> VNĐ</span>
+                        
+                        <p class="original">GIÁ: <span><?php echo number_format($gia_sp, 0, '', ','); ?></span> VND</p>
+                    </div>
+
+                    <div class="buy">
+                        <a href="#"><i class='bx bx-shopping-bag'></i></a>
+                    </div>
+                </div>
             </div>
         </div>
-        <?php 
-        }
-            // DATABASE: CLOSE
-            db_close($conn);
-        ?>
-
+    <?php
+    }
+    ?>
     </div>
 </section>

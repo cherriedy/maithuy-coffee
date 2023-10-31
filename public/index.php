@@ -36,15 +36,12 @@
     <?php 
         if (isset($_GET["page"])) {
             $page = $_GET["page"];
-            include_once(realpath(dirname(__FILE__)) . DS . 'layout/navigation.php');
+
+            if ($page != 5 && $page != 6) {
+                include_once(realpath(dirname(__FILE__)) . DS . 'layout/navigation.php');
+            }
+
             switch($page) {
-                // case 1: 
-                //     break;
-
-                // case 2:
-                //     include_once(realpath(dirname(__FILE__)) . DS . 'pages/about.php');
-                //     break;
-
                 case 3:
                     include_once(realpath(dirname(__FILE__)) . DS . 'pages/product.php');
                     break;
@@ -64,8 +61,8 @@
             }
 
             // INCLUDE: FOOTER.PHP
-            if ($page != 5 || $page != 6) {
-                include_once(realpath(dirname(__FILE__)) . DS . 'layout/footer.php');
+            if ($page != 5 && $page != 6) {
+                // include_once(realpath(dirname(__FILE__)) . DS . 'layout/footer.php');
             }
         }
         else {

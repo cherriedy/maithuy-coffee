@@ -12,25 +12,40 @@
 
 <section class="product-wrapper">
     <div class="product-header-wrapper">
-        <h1>Danh sách sản phẩm</h1>
+        <div class="left">
+            <h1>Danh sách sản phẩm</h1>
 
-        <div class="product-type">
-            <a class="active" href="index.php?page=3">Tất cả</a>
-            <?php 
+            <div class="product-type">
+                <a class="active" href="index.php?page=3">Tất cả</a>
+                <?php 
                 $group = 1;
                 while ($row = db_fetch_assoc($sql_query_result_1)) 
                 {
             ?>
-            <a href="index.php?page=3&&group=<?php echo $group++; ?>"><?php echo $row['TEN_NHOMSP']; ?></a>
-            <?php 
+                <a href="index.php?page=3&&group=<?php echo $group++; ?>"><?php echo $row['TEN_NHOMSP']; ?></a>
+                <?php 
                 }
             ?>
+            </div>
+        </div>
+
+        <div class="right">
+                <div class="search-box">
+                    <form action="" method="get">
+                            <i class="bx bx-search-alt-2"></i>
+                            <input type="search" name="keyword" placeholder="Nhập thông tin tìm kiếm">
+                    </form>
+                </div>
         </div>
     </div>
 
     <div class="product-content">
         <?php 
-        if (isset($_GET['group'])) {
+        if (isset($_GET['keyword'])) {
+            $keyword = $_GET['keyword'];
+            $sql_select_prod = "SELECT * FROM $tb_sp WHERE TEN_SP LIKE %$keyword%";
+        }
+        elseif (isset($_GET['group'])) {
             $group = $_GET['group'];
 
             switch ($group) {
@@ -42,7 +57,7 @@
                     $sql_select_prod = "SELECT * FROM $tb_sp WHERE MA_NHOMSP = 'N002'";
                     break;
 
-                case 2: 
+                case 3: 
                     $sql_select_prod = "SELECT * FROM $tb_sp WHERE MA_NHOMSP = 'N003'";
                     break;
 
@@ -102,7 +117,7 @@
                     <div class="price">
                         <?php $discount = $gia_sp - $gia_sp * .50; ?>
                         <span class="discount"><?php echo number_format($discount, 0, '', ','); ?> VNĐ</span>
-                        
+
                         <p class="original">GIÁ: <span><?php echo number_format($gia_sp, 0, '', ','); ?></span> VND</p>
                     </div>
 
@@ -112,7 +127,7 @@
                 </div>
             </div>
         </div>
-    <?php
+        <?php
     }
     ?>
     </div>

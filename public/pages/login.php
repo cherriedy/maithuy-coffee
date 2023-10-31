@@ -1,3 +1,10 @@
+<?php 
+    session_begin();
+    // CHECK: LOGGED IN ?
+    if (isset($_SESSION['email_logged'])) {
+        header('location: ./../admin/index.php');
+    }
+?>
 <div class="outer-wrapper">
     <div class="inner-wrapper">
         <!-- Wrapper section for login -->
@@ -14,7 +21,7 @@
         </div>
 
         <!-- Form section for sign up -->
-        <form action="" method="post" class="login-form-wrapper">
+        <form action="./functions/login/login.php" method="post" class="login-form-wrapper">
             <p class="big-heading">Đăng nhập tài khoản</p>
             <div class="social-link-btn">
                 <a href="#"><i class="bx bxl-facebook facebook"></i></a>

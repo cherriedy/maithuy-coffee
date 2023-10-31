@@ -8,6 +8,9 @@
     // INCLUDE: DATABASE FUNCTIONS
     include_once(DIR_RESOURCE . DS . 'database' . DS . 'connect.php');
     include_once(DIR_RESOURCE . DS . 'database' . DS . 'query.php');
+    // INCLUDE: SESSION FUNCTIONS
+    include_once(DIR_RESOURCE . DS . 'session' . DS . 'start.php');
+    include_once(DIR_RESOURCE . DS . 'session' . DS . 'close.php');
 ?>
 
 <!DOCTYPE html>

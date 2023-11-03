@@ -28,7 +28,7 @@ if (!isset($_SESSION['email_logged'])) {
     <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tinymce/tinymce-jquery@1/dist/tinymce-jquery.min.js"></script>
 
-    <script>
+    <!-- <script>
         $.urlParam = function(name) {
             var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
             if (results == null) {
@@ -38,66 +38,38 @@ if (!isset($_SESSION['email_logged'])) {
         }
 
 
-        // Loading the other page
-        // $(document).on('click', 'a.active', function(e) {
-        //     e.preventDefault();
+        $(document).on('click','a.active',function(e) {
+            e.preventDefault();
+            /**
+             * Document a.active click function
+             *  
+             * pageURL: get url gor href atrribute
+             * history.pushState: push pageURl into navigation URL bar
+             * pageID: get real path by ID
+             * navigationLink: real path to navigate
+             * 
+            */
+            let pageURL = $(this).attr('href');
+            history.pushState(null, '', pageURL);
+            let pageID = $.urlParam('page');
+            let navLink;
 
-        //     let pageURL = $(this).attr('href');
-        //     let newURL = history.pushState(null, '', pageURL);
+            switch(pageID) {
+                case 2:
+                    navLink = 'pages/prod.php';
+                    break;
+            }
 
-        //     let page = newURL.urlParam('page');
-        //     let Url = 'pages/dash.php';
-
-        //     switch (Url) {
-        //         case 2:
-        //             Url = 'pages/prod.php';
-        //             break;
-
-        //         default:
-        //     }
-
-        //     $.ajax({
-        //         url: Url,
-        //         type: "GET",
-        //         dataType: "html",
-        //         success: function(respond) {
-        //             $('#content-wrapper').html(respond);
-        //         },
-        //     });
-        // });
-
-            $(document).on('click','a.active',function(e) {
-                e.preventDefault();
-                /**
-                 * Document a.active click function
-                 *  
-                 * pageURL: get url gor href atrribute
-                 * history.pushState: push pageURl into navigation URL bar
-                 * pageID: get real path by ID
-                 * navigationLink: real path to navigate
-                 * 
-                */
-                let pageURL = $(this).attr('href');
-                history.pushState(null, '', pageURL);
-                let pageID = $.urlParam('page');
-                let navLink;
-
-                switch(pageID) {
-                    case 2:
-                        navLink = 'pages/prod.php';
-                        break;
-                }
-
-                $.ajax({
-                    url: navLink,
-                    type: 'get',
-                    dataType: 'html',
-                    success: function(respond) {
-                        $('#content-wrapper').html(respond);
-                    },
-                });
+            $.ajax({
+                url: navLink,
+                type: 'get',
+                dataType: 'html',
+                success: function(respond) {
+                    $('#content-wrapper').html(respond);
+                },
             });
-    </script>
+        });
+    </script> -->
 </head>
 
 <body>
@@ -108,6 +80,10 @@ if (!isset($_SESSION['email_logged'])) {
         if (isset($_GET['page'])) {
             $page = $_GET['page'];
             switch($page) {
+                case 1: 
+                    include_once(__DIR__ . '/pages/dash.php');
+                    break;
+
                 case 2: 
                     include_once(__DIR__ . '/functions/sanpham/index.php');
                     break;
@@ -122,6 +98,38 @@ if (!isset($_SESSION['email_logged'])) {
 
                 case 5: 
                     include_once(__DIR__ . '/functions/sanpham/delete.php');
+                    break;
+
+                case 6: 
+                    include_once(__DIR__ . '/functions/loai_sanpham/index.php');
+                    break;
+
+                case 7: 
+                    include_once(__DIR__ . '/functions/loai_sanpham/create.php');
+                    break;
+
+                case 8: 
+                    include_once(__DIR__ . '/functions/loai_sanpham/edit.php');
+                    break;
+
+                case 9: 
+                    include_once(__DIR__ . '/functions/loai_sanpham/delete.php');
+                    break;
+
+                case 10: 
+                    include_once(__DIR__ . '/functions/nhom_sanpham/index.php');
+                    break;
+
+                case 11: 
+                    include_once(__DIR__ . '/functions/nhom_sanpham/create.php');
+                    break;
+
+                case 12: 
+                    include_once(__DIR__ . '/functions/nhom_sanpham/edit.php');
+                    break;
+
+                case 13: 
+                    include_once(__DIR__ . '/functions/nhom_sanpham/delete.php');
                     break;
             }
         }

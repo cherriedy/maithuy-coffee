@@ -180,34 +180,38 @@ div::-webkit-scrollbar-thumb {
 }
 .table-wrapper .table-card table {
   color: #4a5568;
-  width: 150%;
+  width: 120%;
   border-collapse: collapse;
-  text-align: center;
+  text-align: left;
 }
-.table-wrapper .table-card th {
-  height: 50px;
-}
-.table-wrapper .table-card td {
-  height: 85px;
-}
-.table-wrapper .table-card td.option i {
-  color: #002D3B;
-  font-size: 1.5rem;
-  margin-right: 16px;
-}
-.table-wrapper .table-card .odd td, .table-wrapper .table-card .odd th {
+.table-wrapper .table-card table tr:nth-child(odd) {
   background-color: #f3f3f3;
 }
-.table-wrapper .table-card .odd td:first-child, .table-wrapper .table-card .odd th:first-child {
+.table-wrapper .table-card table tr:nth-child(odd) td:first-child,
+.table-wrapper .table-card table tr:nth-child(odd) th:first-child {
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
 }
-.table-wrapper .table-card .odd td:last-child, .table-wrapper .table-card .odd th:last-child {
+.table-wrapper .table-card table tr:nth-child(odd) td:last-child,
+.table-wrapper .table-card table tr:nth-child(odd) th:last-child {
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
 }
-.table-wrapper .table-card .even td, .table-wrapper .table-card .even th {
-  background-color: #fff;
+.table-wrapper .table-card table th,
+.table-wrapper .table-card table td,
+.table-wrapper .table-card table table {
+  padding: 1rem;
+}
+.table-wrapper .table-card table th {
+  height: 50px;
+}
+.table-wrapper .table-card table td {
+  height: 85px;
+}
+.table-wrapper .table-card table td.option i {
+  color: #002D3B;
+  font-size: 1.5rem;
+  margin-right: 16px;
 }
 
 .page_404 {

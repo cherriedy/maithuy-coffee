@@ -1,32 +1,33 @@
-<?php 
-    include_once(realpath(dirname(__FILE__) . './../../../resources/config/config.php'));
-    include_once(realpath(dirname(__FILE__) . './../../../resources/database/connect.php'));
-    include_once(realpath(dirname(__FILE__) . './../../../resources/database/query.php'));
+<?php
+include_once(realpath(dirname(__FILE__) . './../../../resources/config/config.php'));
+include_once(realpath(dirname(__FILE__) . './../../../resources/database/connect.php'));
+include_once(realpath(dirname(__FILE__) . './../../../resources/database/query.php'));
 
-    $conn = db_connect(); 
+$conn = db_connect();
 
-    $tb_sp = $TABLE['sp'];
-    $tb_nsp = $TABLE['nsp'];
-    $tb_lsp = $TABLE['lsp'];
+$tb_sp = $TABLE['sp'];
+$tb_nsp = $TABLE['nsp'];
+$tb_lsp = $TABLE['lsp'];
 
-    $sql = "SELECT MA_SP 
+$sql = "SELECT MA_SP 
             FROM $tb_sp 
             ORDER BY MA_SP DESC
             LIMIT 1";
 
-    $result = db_fetch_assoc(db_query($conn, $sql))['MA_SP'];
-    $lastID = (int)filter_var($result, FILTER_SANITIZE_NUMBER_INT);
+$result = db_fetch_assoc(db_query($conn, $sql))['MA_SP'];
+$lastID = (int)filter_var($result, FILTER_SANITIZE_NUMBER_INT);
 
-    function generateID($lastID) {
-        $newID = $lastID + 1;
-        if ($newID >= 0 && $newID < 10) {
-            return 'SP' . '00' . $newID;
-        }
-
-        if ($newID >= 10 && $newID < 100) {
-            return 'SP' . '0' . $newID;
-        }
+function generateID($lastID)
+{
+    $newID = $lastID + 1;
+    if ($newID >= 0 && $newID < 10) {
+        return 'SP' . '00' . $newID;
     }
+
+    if ($newID >= 10 && $newID < 100) {
+        return 'SP' . '0' . $newID;
+    }
+}
 ?>
 <section id="create-form">
     <form action="" method="post" id="create-prod" enctype="multipart/form-data">
@@ -45,38 +46,36 @@
                         <div class="item-element">
                             <label for="group">Nhóm sản phẩm</label>
                             <select class="item-input select" name="group">
-                            <?php 
+                                <?php
                                 $sql = "SELECT DISTINCT TEN_NHOMSP , $tb_sp.MA_NHOMSP
                                         FROM $tb_sp INNER JOIN $tb_nsp ON $tb_sp.MA_NHOMSP = $tb_nsp.MA_NHOMSP";
                                 $result = db_query($conn, $sql);
-                                while ($row = db_fetch_assoc($result))
-                                {
+                                while ($row = db_fetch_assoc($result)) {
                                     $ma_nsp = $row['MA_NHOMSP'];
                                     $ten_nsp = $row['TEN_NHOMSP'];
-                            ?>
-                                <option value="<?php echo $ma_nsp ; ?>"><?php echo $ten_nsp; ?></option>
-                            <?php
-                            }
-                            ?>
+                                ?>
+                                    <option value="<?php echo $ma_nsp; ?>"><?php echo $ten_nsp; ?></option>
+                                <?php
+                                }
+                                ?>
                             </select>
                         </div>
 
                         <div class="item-element">
                             <label for="type">Loại sản phẩm</label>
                             <select class="item-input select" name="type" id="">
-                            <?php 
+                                <?php
                                 $sql = "SELECT DISTINCT TEN_LOAISP , $tb_sp.MA_LOAISP
                                         FROM $tb_sp INNER JOIN $tb_lsp ON $tb_sp.MA_LOAISP = $tb_lsp.MA_LOAISP";
                                 $result = db_query($conn, $sql);
-                                while ($row = db_fetch_assoc($result))
-                                {
+                                while ($row = db_fetch_assoc($result)) {
                                     $ma_lsp = $row['MA_LOAISP'];
                                     $ten_lsp = $row['TEN_LOAISP'];
-                            ?>
-                                <option value="<?php echo $ma_lsp ; ?>"><?php echo $ten_lsp; ?></option>
-                            <?php
-                            }
-                            ?>
+                                ?>
+                                    <option value="<?php echo $ma_lsp; ?>"><?php echo $ten_lsp; ?></option>
+                                <?php
+                                }
+                                ?>
                             </select>
                         </div>
 
@@ -145,31 +144,30 @@
 </section>
 
 <?php
-    if (isset($_POST['submit-btn'])) {
-        $img_folder_path = realpath(dirname(__FILE__) . '/../../../upload/img/');
-        $img_name = $img_folder_path . $_FILES['image']['name'];
-        move_uploaded_file($_FILES['image']['tmp_name'], $img_name);
+if (isset($_POST['submit-btn'])) {
+    $img_folder_path = realpath(dirname(__FILE__) . '/../../../upload/img/');
+    $img_name = $img_folder_path . $_FILES['image']['name'];
+    move_uploaded_file($_FILES['image']['tmp_name'], $img_name);
 
-        $prodid = $_POST['id'];
-        $name = $_POST['name'];
-        $groupid = $_POST['group'];
-        $typeid = $_POST['type'];
-        $origin = $_POST['origin'];
-        $price = $_POST['price'];
-        $des = $_POST['des'];
-        $img = $_FILES['image']['name'];
+    $prodid = $_POST['id'];
+    $name = $_POST['name'];
+    $groupid = $_POST['group'];
+    $typeid = $_POST['type'];
+    $origin = $_POST['origin'];
+    $price = $_POST['price'];
+    $des = $_POST['des'];
+    $img = $_FILES['image']['name'];
 
-        $sql = "INSERT INTO $tb_sp 
+    $sql = "INSERT INTO $tb_sp 
                 VALUES('$prodid', '$typeid', '$groupid', '$name', '$price', '$origin', '$des', '$img')";
 
-        if (db_query($conn, $sql)) {
-            // echo "<script>alert('success')</script>";
-            echo "<script>window.location.href = 'index.php?page=2'</script>";
-        }
-        else {
-            // echo "<script>alert('fail !')</script>" ;
-        }
-
-        db_close($conn);
+    if (db_query($conn, $sql)) {
+        // echo "<script>alert('success')</script>";
+        echo "<script>window.location.href = 'index.php?page=2'</script>";
+    } else {
+        // echo "<script>alert('fail !')</script>" ;
     }
+
+    db_close($conn);
+}
 ?>

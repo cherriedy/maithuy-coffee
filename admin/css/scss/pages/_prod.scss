@@ -1,4 +1,4 @@
-@use '../abstracts/' as *;
+@use '../abstracts/'as *;
 
 
 .table-wrapper {
@@ -34,48 +34,54 @@
 
         table {
             color: $table-text-color;
-            width: 150%;
+            width: 120%;
             border-collapse: collapse;
-            text-align: center;
-        }
+            text-align: left;
 
-        th {
-            height: 50px;
-        }
+            tr {
+                &:nth-child(odd) {
+                    background-color: #f3f3f3;
 
-        td {
-            height: 85px;
+                    td,
+                    th {
+                        &:first-child {
+                            border-top-left-radius: 5px;
+                            border-bottom-left-radius: 5px;
+                        }
 
-            &.option {
-                i {
-                    color: $main-color;
-                    font-size: 1.5rem;
-                    margin-right: 16px;
+                        &:last-child {
+                            border-top-right-radius: 5px;
+                            border-bottom-right-radius: 5px;
+                        }
+                    }
+                }
+            }
+
+            th,
+            td,
+            table {
+                padding: 1rem;
+            }
+
+            th {
+                height: 50px;
+            }
+
+            td {
+                height: 85px;
+
+                &.option {
+                    i {
+                        color: $main-color;
+                        font-size: 1.5rem;
+                        margin-right: 16px;
+                    }
                 }
             }
         }
 
-        .odd {
-            td, th {
-                background-color: #f3f3f3;
 
-                &:first-child {
-                    border-top-left-radius: 5px;
-                    border-bottom-left-radius: 5px;
-                }
 
-                &:last-child {
-                    border-top-right-radius: 5px;
-                    border-bottom-right-radius: 5px;
-                }
-            }
-        }
-
-        .even {
-            td, th {
-                background-color: #fff;
-            }
-        }
 
     }
 }

@@ -20,21 +20,21 @@
             </li>
 
             <li>
-                <a href="index.php?page=3">
+                <a href="index.php?page=6">
                     <i class='bx bxl-product-hunt'></i>
                     <span>Loại sản phẩm</span>
                 </a>
             </li>
 
             <li>
-                <a href="index.php?page=4">
+                <a href="index.php?page=10">
                     <i class='bx bxl-product-hunt'></i>
                     <span>Nhóm sản phẩm</span>
                 </a>
             </li>
 
             <li>
-                <a href="index.php?page=5">
+                <a href="index.php?page=13">
                     <i class='bx bx-user-circle'></i>
                     <span>Người dùng</span>
                 </a>

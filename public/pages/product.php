@@ -41,9 +41,34 @@
 
     <div class="product-content">
         <?php 
-        if (isset($_GET['keyword'])) {
-            $keyword = $_GET['keyword'];
-            $sql_select_prod = "SELECT * FROM $tb_sp WHERE TEN_SP LIKE %$keyword%";
+        /**
+         * Document the pagination function
+         * 
+         * $limit_per_page: The number of prods per page
+         * $num_of_products: The number of prods in database
+         * $num_of_pages: The number of pages
+         */
+        $limit_per_page = 4;
+        $num_of_products = db_query($conn, "SELECT * FROM $tb_sp")->num_rows;
+        $num_of_pages = ceil($num_of_products / $limit_per_page);
+
+        /* Get current being visited */
+        if (!isset($_GET['pagination'])) {
+            $current_page = 1;
+            $start_row = 0;
+        } else {
+            $current_page = $_GET['pagination'];
+            $start_row = ($current_page - 1) * $limit_per_page;
+        }
+
+        /**
+         * GET SQL STATEMENT TO SELECT PRODUCT
+         * 
+         * isset($_GET['pagination']) : get product by using pagination
+         * isset($_GET['group']) : get product by using group
+         */
+        if (isset($_GET['pagination'])) {
+            $sql_select_prod = "SELECT * FROM $tb_sp LIMIT {$start_row}, {$limit_per_page}";
         }
         elseif (isset($_GET['group'])) {
             $group = $_GET['group'];
@@ -65,12 +90,12 @@
                     $sql_select_prod = "SELECT * FROM $tb_sp WHERE MA_NHOMSP = 'N004'";
                     break;
             }
-        }
-        else {
+        } else {
             $sql_select_prod = "SELECT * FROM $tb_sp";
         }
 
         $sql_query_result_2 = db_query($conn, $sql_select_prod);
+
         while ($row = db_fetch_assoc($sql_query_result_2))
         {
             $ma_sp = $row['MA_SP'];
@@ -86,10 +111,13 @@
 
             $ten_nsp = db_fetch_assoc(db_query($conn, $sql_select_ten_nsp))['TEN_NHOMSP'];
             $ten_lsp = db_fetch_assoc(db_query($conn, $sql_select_ten_lsp))['TEN_LOAISP'];
+
+            // Img path
+            $IMG_PATH = dirname(__FILE__) . DS . 'public'. DS .'img' . DS . $hinh_sp;
         ?>
         <div class="product-card">
             <div class="img-wrapper">
-                <img src="./img/product.png" alt="prod-img">
+                <img src="./img/<?php echo $hinh_sp; ?>" alt="prod-img">
             </div>
 
             <div class="product-des">
@@ -118,7 +146,7 @@
                         <?php $discount = $gia_sp - $gia_sp * .50; ?>
                         <span class="discount"><?php echo number_format($discount, 0, '', ','); ?> VNĐ</span>
 
-                        <p class="original">GIÁ: <span><?php echo number_format($gia_sp, 0, '', ','); ?></span> VND</p>
+                        <p class="original">GIÁ: <span><?php echo number_format($gia_sp, 0, '', ','); ?></span> VNĐ</p>
                     </div>
 
                     <div class="buy">
@@ -127,8 +155,21 @@
                 </div>
             </div>
         </div>
-        <?php
+    <?php
     }
     ?>
+    </div>
+
+    <div class="pagination">
+        <a class="prev-next" href="index.php?page=3&&pagination=<?php echo $current_page - 1 ?>">prev</a>
+        <?php
+            for ($i = 1; $i <= $num_of_pages; $i++)
+            {
+        ?>
+            <a href="index.php?page=3&&pagination=<?php echo $i; ?>"><?php echo $i; ?></a>
+        <?php 
+            }
+        ?>
+        <a class="prev-next" href="index.php?page=3&&pagination=<?php echo $current_page + 1 ?>">next</a>
     </div>
 </section>

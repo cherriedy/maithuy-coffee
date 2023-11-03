@@ -65,7 +65,6 @@
 
             // INCLUDE: FOOTER.PHP
             if ($page != 5 && $page != 6) {
-                // include_once(realpath(dirname(__FILE__)) . DS . 'layout/footer.php');
             }
         }
         else {
@@ -73,6 +72,8 @@
         }
 
     ?>
+
+    <?php include_once(realpath(dirname(__FILE__)) . DS . 'layout/footer.php'); ?>
 
     <!-- SCRIPT: FONTAWESOME-->
     <script src="https://kit.fontawesome.com/7c9a6eab84.js" crossorigin="anonymous"></script>

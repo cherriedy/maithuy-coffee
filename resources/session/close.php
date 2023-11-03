@@ -5,8 +5,8 @@
     // Để đăng xuất chỉ cần xoá $_SESSION['username_logged] với unset
     // Sau đó điều hướng về index.php
     function session_close() {
-        if (isset($_SESSION['username_logged'])) {
-            unset($_SESSION['username_logged']);
+        if (isset($_SESSION['email_logged'])) {
+            unset($_SESSION['email_logged']);
         }
         else {
             die('Chưa đăng nhập !');

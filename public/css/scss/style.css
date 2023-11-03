@@ -95,6 +95,8 @@ footer .row-wrapper .footer-path.four-items .item .sub-item a {
   color: #6f6f6f;
 }
 footer .row-wrapper .footer-path.three-items .item:last-child {
+  width: -webkit-max-content;
+  width: -moz-max-content;
   width: max-content;
 }
 footer .row-wrapper .footer-path.two-items .item .sub-item {
@@ -372,6 +374,8 @@ footer .horizontal-line.white {
   padding-bottom: 20px;
 }
 #about .btn {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
   width: fit-content;
   outline: none;
   border: none;
@@ -417,7 +421,8 @@ footer .horizontal-line.white {
 .testimonial img {
   height: 150px;
   width: 150px;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   border-radius: 50%;
 }
 .testimonial .slide {
@@ -585,6 +590,8 @@ footer .horizontal-line.white {
   border-radius: 100px;
   font-size: 0.75rem;
   font-weight: 500;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
   width: fit-content;
   text-transform: uppercase;
 }
@@ -667,7 +674,8 @@ footer .horizontal-line.white {
   align-items: center;
   justify-content: center;
   margin-top: 32px;
-  column-gap: 12px;
+  -moz-column-gap: 12px;
+       column-gap: 12px;
 }
 .product-wrapper .pagination a {
   color: #002D3B;
@@ -854,7 +862,8 @@ iframe {
   inset: 0;
   position: fixed;
   background-color: #002D3B;
-  clip-path: polygon(0 100%, 0 0, 100% 0, 70% 100%);
+  -webkit-clip-path: polygon(0 100%, 0 0, 100% 0, 70% 100%);
+          clip-path: polygon(0 100%, 0 0, 100% 0, 70% 100%);
   z-index: -1;
 }
 

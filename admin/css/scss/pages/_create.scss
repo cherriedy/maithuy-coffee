@@ -1,0 +1,94 @@
+@use '../abstracts/'as *;
+@use '../components/'as *;
+
+.main-wrapper {
+    width: 100%;
+    margin: 0 auto;
+}
+
+#create-form {
+    form {
+        .card-wrapper {
+            padding: 40px 200px;
+
+            .card-body {
+                display: flex;
+                flex-direction: column;
+                padding: 25px;
+                background-color: #fff;
+                border-radius: 15px;
+                margin-bottom: 30px;
+                gap: 24px;
+
+                h5 {
+                    font-size: 1.5rem;
+                    font-weight: 600;
+                }
+
+                .card-body__items {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 16px;
+
+                    .item-element {
+                        width: 100%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: flex-start;
+
+                        label {
+                            width: calc(30% - 12px);
+                            padding: 12px;
+                            font-size: 1rem;
+                            font-weight: 500;
+                        }
+
+                        .item-input {
+                            width: 70%;
+                            background-color: #f9f9f6 !important;
+                            border: 1px solid #efefef;
+                            border-radius: 4px;
+                            padding: 14px;
+                            font-size: 16px;
+                            font-weight: 400;
+                            color: #898989;
+
+                            &:focus {
+                                border-color: transparent;
+                                outline: none;
+                            }
+
+                            &.select {
+                                font-size: 14px !important;
+                            }
+
+                            input {
+                                &#file-upload-button {
+                                    font-weight: bold;
+                                    color: dodgerblue;
+                                    padding: 0.5em;
+                                    border: thin solid grey;
+                                    border-radius: 3px;
+
+                                }
+                            }
+                        }
+
+                    }
+                }
+
+            }
+
+            .submit-btn {
+                padding: 16px 32px;
+                border: 1px solid #fff;
+                border-radius: 10px;
+                outline: none;
+                background-color: $main-color;
+                color: #fff;
+                font-size: 1rem;
+                font-weight: 600;
+            }
+        }
+    }
+}

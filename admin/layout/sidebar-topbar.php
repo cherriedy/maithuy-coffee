@@ -49,8 +49,8 @@
 
             <li>
                 <a href="index.php?page=7">
-                    <i class='bx bxs-user-detail'></i>
-                    <span>Tài khoản</span>
+                    <i class='bx bx-log-out'></i>
+                    <span>Đăng xuất</span>
                 </a>
             </li>
         </ul>

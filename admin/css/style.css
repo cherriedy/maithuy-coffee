@@ -210,4 +210,141 @@ div::-webkit-scrollbar-thumb {
   background-color: #fff;
 }
 
-/*# sourceMappingURL=style.css.map */
+.page_404 {
+  padding: 40px 0;
+  background: #fff;
+  font-family: "Arvo", serif;
+}
+.page_404 img {
+  width: 100%;
+}
+
+.four_zero_four_bg {
+  background-image: url(https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif);
+  height: 400px;
+  background-position: center;
+}
+.four_zero_four_bg h1 {
+  font-size: 80px;
+}
+.four_zero_four_bg h3 {
+  font-size: 80px;
+}
+
+.link_404 {
+  color: #fff !important;
+  padding: 10px 20px;
+  background: #39ac31;
+  margin: 20px 0;
+  display: inline-block;
+}
+
+.contant_box_404 {
+  margin-top: -50px;
+}
+
+.page_404 {
+  padding: 40px 0;
+  background: #fff;
+  font-family: "Arvo", serif;
+}
+.page_404 img {
+  width: 100%;
+}
+
+.four_zero_four_bg {
+  background-image: url(https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif);
+  height: 400px;
+  background-position: center;
+}
+.four_zero_four_bg h1 {
+  font-size: 80px;
+}
+.four_zero_four_bg h3 {
+  font-size: 80px;
+}
+
+.link_404 {
+  color: #fff !important;
+  padding: 10px 20px;
+  background: #39ac31;
+  margin: 20px 0;
+  display: inline-block;
+}
+
+.contant_box_404 {
+  margin-top: -50px;
+}
+
+.main-wrapper {
+  width: 100%;
+  margin: 0 auto;
+}
+
+#create-form form .card-wrapper {
+  padding: 40px 200px;
+}
+#create-form form .card-wrapper .card-body {
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
+  background-color: #fff;
+  border-radius: 15px;
+  margin-bottom: 30px;
+  gap: 24px;
+}
+#create-form form .card-wrapper .card-body h5 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+#create-form form .card-wrapper .card-body .card-body__items {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+#create-form form .card-wrapper .card-body .card-body__items .item-element {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+#create-form form .card-wrapper .card-body .card-body__items .item-element label {
+  width: calc(30% - 12px);
+  padding: 12px;
+  font-size: 1rem;
+  font-weight: 500;
+}
+#create-form form .card-wrapper .card-body .card-body__items .item-element .item-input {
+  width: 70%;
+  background-color: #f9f9f6 !important;
+  border: 1px solid #efefef;
+  border-radius: 4px;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 400;
+  color: #898989;
+}
+#create-form form .card-wrapper .card-body .card-body__items .item-element .item-input:focus {
+  border-color: transparent;
+  outline: none;
+}
+#create-form form .card-wrapper .card-body .card-body__items .item-element .item-input.select {
+  font-size: 14px !important;
+}
+#create-form form .card-wrapper .card-body .card-body__items .item-element .item-input input#file-upload-button {
+  font-weight: bold;
+  color: dodgerblue;
+  padding: 0.5em;
+  border: thin solid grey;
+  border-radius: 3px;
+}
+#create-form form .card-wrapper .submit-btn {
+  padding: 16px 32px;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  outline: none;
+  background-color: #002D3B;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+}

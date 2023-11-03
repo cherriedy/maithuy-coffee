@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="./../../vendor/jquery/jquery-3.7.1.min.js"></script>
+    <script>
+        function getResult(url) {
+            $('#load-icon').show();
+
+            $.ajax({
+                url: url,
+                type: 'GET',
+                data: {
+                    rowCount: $('#rowCount').val()
+                },
+                success: function (respond) {
+                    $('#load-icon').hide();
+                    $('#pagination').html(respond);
+                },
+                error: function () {}
+            });
+        }
+    </script>
+
+    <style>
+        #loader-icon {
+            text-align: center;
+            position: relative;
+            top: 10px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- <a id="load-icon"></> -->
+
+    <div id="pagination">
+        <input type="hidden" name="" id="rowCount">
+    </div>
+
+    <script>
+        getResult('getResult.php');
+    </script>
+</body>
+
+</html>

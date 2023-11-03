@@ -4,9 +4,9 @@
 
 .product-wrapper {
     width: 100%;
-    height: 100vh;
+    // height: 100vh;
     margin: 2% auto;
-    padding: 4% 100px;
+    padding: 4% 100px 0 100px;
 
     .product-header-wrapper {
         display: flex;
@@ -74,7 +74,7 @@
         width: 100%;
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
+        justify-content: flex-start;
         gap: 20px;
 
         .product-card {
@@ -183,7 +183,6 @@
                     }
 
                     .buy {
-                        // @include circle-btn(20px, 14px, #fff, $primary-color);
                         width: 20px;
                         height: 20px;
                         padding: 20px;
@@ -203,6 +202,25 @@
                         }
                     }
                 }
+            }
+        }
+    }
+
+    .pagination {
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 32px;
+        column-gap: 12px;
+        
+        a {
+            color: $primary-color;
+            font-size: 1em;
+
+            &.prev-next {
+                font-size: .75rem;
+                margin: 0 4px;
             }
         }
     }

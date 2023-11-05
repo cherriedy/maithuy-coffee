@@ -110,6 +110,7 @@
     align-items: center;
     justify-content: space-between;
     position: fixed;
+    z-index: 9999;
     padding: 12px 80px;
     transition: all .2s ease 0s;
 

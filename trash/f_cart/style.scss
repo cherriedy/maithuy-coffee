@@ -1,0 +1,238 @@
+@use './../../admin/css/scss/abstracts/'as *;
+@use './../../admin/css/scss/components/'as *;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style-type: none;
+    font-family: $font-family-roboto;
+    color: $main-color;
+}
+
+.m-wrapper {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.horizontal-line {
+    width: 100%;
+    border-bottom: 1px solid #cecece;
+    margin: 24px 0;
+
+    &.transparent {
+        border-color: transparent !important;
+    }
+
+    &.white {
+        border-color: #fff !important;
+    }
+}
+
+img {
+    width: 75px;
+    height: 75px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.cart-checkout {
+    width: 100%;
+    // background-color: #f8f8f8;
+    background-color: bisque;
+    padding: 80px 100px;
+
+    .cc-body {
+        display: flex;
+        justify-content: space-between;
+        gap: 32px;
+        padding: 16px;
+        border-radius: 8px;
+        background-color: #fff;
+
+        .cart-side {
+            width: calc(75% - 32px);
+            padding: 24px;
+
+            .cart-header {
+                a {
+                    font-size: 1.5rem;
+                    font-weight: 600;
+                    margin-bottom: 24px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                    gap: 8px;
+
+                    i {
+                        font-weight: 900;
+                    }
+                }
+            }
+
+            .cart-content {
+                width: 100%;
+
+                .product-items {
+                    .item-card {
+                        width: 100%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+
+                        .detail-info {
+                            display: flex;
+                            flex-direction: column;
+                            gap: 8px;
+
+                            .attr {
+                                display: flex;
+                                gap: 8px;
+
+                                span {
+                                    font-size: 12px;
+                                    text-transform: uppercase;
+
+                                }
+                            }
+
+                            span {
+                                &.name {
+                                    font-size: 15px;
+                                    font-weight: 600;
+                                    text-transform: uppercase;
+                                }
+                            }
+                        }
+
+                        .quantity {
+                            position: relative;
+
+                            input {
+                                width: 100px;
+                                outline: 0;
+                                padding: 10px;
+                                border: 1px solid $main-color;
+                                border-radius: 12px;
+
+                                // &::after {
+                                //     content: 'Số lượng';
+                                //     position: absolute;
+                                //     color: $main-color !important;
+                                //     top: 0px;
+                                //     left: 0;
+                                // }
+                            }
+                        }
+
+                        .price {
+                            span {
+                                display: flex;
+                                gap: 4px;
+                                align-items: center;
+                                justify-content: flex-start;
+                                font-size: 1.2rem;
+                            }
+                        }
+
+                        .action {
+                            margin-right: 8px;
+
+                            .remove {
+                                i {
+                                    font-size: 1rem;
+                                }
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+
+        .checkout-side {
+            width: 25%;
+            background-color: $main-color;
+            border-radius: 8px;
+            padding: 24px;
+
+            h2,
+            span,
+            label {
+                color: #fff !important;
+            }
+
+            .checkout-header {
+                h2 {
+                    font-size: 1.5rem;
+                }
+            }
+        }
+
+        .info-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+
+            .input-form {
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+
+                label {
+                    font-size: 14px;
+                    font-weight: 500;
+                }
+
+                input {
+                    outline: none;
+                    padding: 12px;
+                    border: 1px solid #fff;
+                    border-radius: 5px;
+                }
+            }
+
+            .price-box {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                span {
+                    font-size: 1.1rem;
+                    font-weight: 500;
+                    color: #fff;
+                }
+            }
+        }
+
+        .checkout-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+             
+            button {
+                width: 100%;
+                padding: 12px 16px;
+                background-color: #fff;
+                display: flex;
+                justify-content: space-between;
+                border: 1px solid #fff;
+                border-radius: 5px;
+
+                span, i {
+                    font-size: 1rem;
+                    font-weight: 600;
+                    color: $main-color !important;
+
+                    &.btn {
+                        display: inline-flex;
+                        align-items: center;
+                        gap: 8px;
+                    }
+                }
+            }
+        }
+
+    }
+}

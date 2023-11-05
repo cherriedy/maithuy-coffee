@@ -1,16 +1,16 @@
 <?php
-    // SHORTHAND: DIRECTORY_SEPARATOR => DS
-    define('DS', DIRECTORY_SEPARATOR);
-    // SHORTHAND: RESOURCES PATH => DIR_RESOURCE
-    define('DIR_RESOURCE', $_SERVER['DOCUMENT_ROOT'] . DS . 'maithuy' . DS . 'resources');
-    // INCLUDE: CONFIG
-    include_once(DIR_RESOURCE . DS . 'config' . DS . 'config.php');
-    // INCLUDE: DATABASE FUNCTIONS
-    include_once(DIR_RESOURCE . DS . 'database' . DS . 'connect.php');
-    include_once(DIR_RESOURCE . DS . 'database' . DS . 'query.php');
-    // INCLUDE: SESSION FUNCTIONS
-    include_once(DIR_RESOURCE . DS . 'session' . DS . 'start.php');
-    include_once(DIR_RESOURCE . DS . 'session' . DS . 'close.php');
+// SHORTHAND: DIRECTORY_SEPARATOR => DS
+define('DS', DIRECTORY_SEPARATOR);
+// SHORTHAND: RESOURCES PATH => DIR_RESOURCE
+define('DIR_RESOURCE', $_SERVER['DOCUMENT_ROOT'] . DS . 'maithuy' . DS . 'resources');
+// INCLUDE: CONFIG
+include_once DIR_RESOURCE . DS . 'config' . DS . 'config.php';
+// INCLUDE: DATABASE FUNCTIONS
+include_once DIR_RESOURCE . DS . 'database' . DS . 'connect.php';
+include_once DIR_RESOURCE . DS . 'database' . DS . 'query.php';
+// INCLUDE: SESSION FUNCTIONS
+include_once DIR_RESOURCE . DS . 'session' . DS . 'start.php';
+include_once DIR_RESOURCE . DS . 'session' . DS . 'close.php';
 ?>
 
 <!DOCTYPE html>
@@ -30,53 +30,58 @@
     <!-- LINK: SWIPER CSS -->
     <link href="./../vendor/swiper/swiper-bundle.min.css" rel="stylesheet" type="text/css">
 
+    <?php include_once realpath(dirname(__FILE__) . '/functions/hide_loginBtn/index.php');?>
+
 </head>
 
 <body>
     <!-- INCLUDE: MENU.PHP -->
 
     <!-- CONTROLLER: NAVIGATION -->
-    <?php 
-        if (isset($_GET["page"])) {
-            $page = $_GET["page"];
+<?php
+if (isset($_GET["page"])) {
+    $page = $_GET["page"];
 
-            if ($page != 5 && $page != 6) {
-                include_once(realpath(dirname(__FILE__)) . DS . 'layout/navigation.php');
-            }
+    if ($page != 5 && $page != 6) {
+        include_once realpath(dirname(__FILE__)) . DS . 'layout/navigation.php';
+    }
 
-            switch($page) {
-                case 3:
-                    include_once(realpath(dirname(__FILE__)) . DS . 'pages/product.php');
-                    break;
+    switch ($page) {
+        case 3:
+            include_once realpath(dirname(__FILE__)) . DS . 'pages/product.php';
+            break;
 
-                case 4:
-                    include_once(realpath(dirname(__FILE__)) . DS . 'pages/contact.php');
-                    break;
+        case 7:
+            include_once realpath(dirname(__FILE__)) . DS . 'pages/cart.php';
+            break;
 
-                case 5:
-                    include_once(realpath(dirname(__FILE__)) . DS . 'pages/login.php');
-                    break;
+        case 4:
+            include_once realpath(dirname(__FILE__)) . DS . 'pages/contact.php';
+            break;
 
-                case 6:
-                    include_once(realpath(dirname(__FILE__)) . DS . 'pages/register.php');
-                    break;
-                default:
-            }
+        case 5:
+            include_once realpath(dirname(__FILE__)) . DS . 'pages/login.php';
+            break;
 
-            // INCLUDE: FOOTER.PHP
-            if ($page != 5 && $page != 6) {
-            }
-        }
-        else {
-            include_once(realpath(dirname(__FILE__)) . DS . 'pages/homepage.php');
-        }
+        case 6:
+            include_once realpath(dirname(__FILE__)) . DS . 'pages/register.php';
+            break;
+        default:
+    }
 
-    ?>
+    // INCLUDE: FOOTER.PHP
+    if ($page != 5 && $page != 6) {
+    }
+} else {
+    include_once realpath(dirname(__FILE__)) . DS . 'pages/homepage.php';
+}
 
-    <?php include_once(realpath(dirname(__FILE__)) . DS . 'layout/footer.php'); ?>
+?>
+
+    <?php include_once realpath(dirname(__FILE__)) . DS . 'layout/footer.php';?>
 
     <!-- SCRIPT: FONTAWESOME-->
-    <script src="https://kit.fontawesome.com/7c9a6eab84.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/7c9a6eab84.js" crossorigin="anonymous"></>
 
     <!-- SCRIPT: BOXICONS -->
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
@@ -86,7 +91,7 @@
 
     <!-- SCRIPT: SCROLL REVEAL -->
     <script src="./../vendor/scrollreveal/scrollreveal.js"></script>
-    
+
     <!-- SCRIPT: JQUERY -->
     <script src="./../vendor/jquery/jquery-3.7.1.min.js"></script>
 

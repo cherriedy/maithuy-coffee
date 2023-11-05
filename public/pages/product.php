@@ -113,11 +113,11 @@
             $ten_lsp = db_fetch_assoc(db_query($conn, $sql_select_ten_lsp))['TEN_LOAISP'];
 
             // Img path
-            $IMG_PATH = dirname(__FILE__) . DS . 'public'. DS .'img' . DS . $hinh_sp;
+            // $IMG_PATH = dirname(__FILE__) . DS . 'public'. DS .'img' . DS . $hinh_sp;
         ?>
         <div class="product-card">
             <div class="img-wrapper">
-                <img src="./img/<?php echo $hinh_sp; ?>" alt="prod-img">
+                <img src="./../upload/img/<?php echo $hinh_sp; ?>" alt="prod-img">
             </div>
 
             <div class="product-des">
@@ -150,7 +150,7 @@
                     </div>
 
                     <div class="buy">
-                        <a href="#"><i class='bx bx-shopping-bag'></i></a>
+                        <a href="index.php?page=7&&id=<?php echo $ma_sp; ?>"><i class='bx bx-shopping-bag'></i></a>
                     </div>
                 </div>
             </div>

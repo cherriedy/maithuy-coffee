@@ -34,21 +34,21 @@
             </li>
 
             <li>
-                <a href="index.php?page=13">
+                <a href="index.php?page=14">
                     <i class='bx bx-user-circle'></i>
                     <span>Người dùng</span>
                 </a>
             </li>
 
             <li>
-                <a href="index.php?page=6">
+                <a href="index.php?page=18">
                     <i class='bx bx-menu'></i>
                     <span>Vai trò</span>
                 </a>
             </li>
 
             <li>
-                <a href="index.php?page=7">
+                <a href="index.php?page=logout">
                     <i class='bx bx-log-out'></i>
                     <span>Đăng xuất</span>
                 </a>

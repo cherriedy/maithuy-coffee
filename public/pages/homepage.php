@@ -1,14 +1,6 @@
-<!-- <section id="banner" class="section-p1">
-    <h2>moring</h2>
-    <h2>coffee</h2>
-    <p>Wake Up and Smell the Coffee! and Start Your Morning Right with a Cup of Delicious Coffee!</p>
-
-    <div class="button-space">
-        <button class="normal"><a href="#">Đặt Hàng Ngay !</a></button>
-        <button class="normal"><a href="#">Giảm 75%</a></button>
-    </div>
-</section>
- -->
+<!-- <?php
+include_once(realpath(dirname(__FILE__) . '/../functions/hide_loginBtn/index.php'));
+?> -->
 <section class="navigation-wrapper">
     <header>
         <div class="navigation-content">
@@ -26,7 +18,7 @@
                 <li><a href="index.php?page=4">Liên hệ</a></li>
                 <div class="vertical-line transparent"></div>
                 <!-- <li><a href="./pages/login.php">Đăng nhập</a></li> -->
-                <li><a href="index.php?page=5">Đăng nhập</a></li>
+                <li class="loginBtn"><a href="index.php?page=5">Đăng nhập</a></li>
             </ul>
         </div>
         <div class="banner-content">

@@ -80,6 +80,10 @@ if (!isset($_SESSION['email_logged'])) {
         if (isset($_GET['page'])) {
             $page = $_GET['page'];
             switch($page) {
+                case 'logout':
+                    include_once(__DIR__ . '/functions/logout/logout.php');
+                    break;
+
                 case 1: 
                     include_once(__DIR__ . '/pages/dash.php');
                     break;
@@ -131,6 +135,39 @@ if (!isset($_SESSION['email_logged'])) {
                 case 13: 
                     include_once(__DIR__ . '/functions/nhom_sanpham/delete.php');
                     break;
+
+                case 14: 
+                    include_once(__DIR__ . '/functions/nguoidung/index.php');
+                    break;
+
+                case 15: 
+                    include_once(__DIR__ . '/functions/nguoidung/create.php');
+                    break;
+
+                case 16: 
+                    include_once(__DIR__ . '/functions/nguoidung/edit.php');
+                    break;
+
+                case 17: 
+                    include_once(__DIR__ . '/functions/nguoidung/delete.php');
+                    break;
+
+                case 18: 
+                    include_once(__DIR__ . '/functions/chucvu/index.php');
+                    break;
+
+                case 19: 
+                    include_once(__DIR__ . '/functions/chucvu/create.php');
+                    break;
+
+                case 20: 
+                    include_once(__DIR__ . '/functions/chucvu/edit.php');
+                    break;
+
+                case 21: 
+                    include_once(__DIR__ . '/functions/chucvu/delete.php');
+                    break;
+
             }
         }
         ?>

@@ -645,21 +645,12 @@ footer .horizontal-line.white {
   text-decoration: line-through;
 }
 .product-wrapper .product-content .product-card .product-des .prodcut-des__price-buy .buy {
-  width: 20px;
-  height: 20px;
-  padding: 20px;
-  border-radius: 50%;
-  background-color: #002D3B;
   display: flex;
   align-items: center;
-  justify-content: center;
-  transition: all 0.2s ease 0s;
+  justify-content: space-between;
 }
-.product-wrapper .product-content .product-card .product-des .prodcut-des__price-buy .buy i {
-  color: #f0f0f0;
-}
-.product-wrapper .product-content .product-card .product-des .prodcut-des__price-buy .buy:hover {
-  scale: 0.95;
+.product-wrapper .product-content .product-card .product-des .prodcut-des__price-buy .buy input.quantity-box {
+  width: 50px;
 }
 .product-wrapper .pagination {
   height: 24px;
@@ -845,13 +836,19 @@ iframe {
   width: calc(75% - 32px);
   padding: 24px;
 }
+.cart-checkout .cc-body .cart-side .cart-header {
+  width: 100%;
+  height: 24px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
 .cart-checkout .cc-body .cart-side .cart-header a {
   font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 24px;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
   gap: 8px;
 }
 .cart-checkout .cc-body .cart-side .cart-header a i {
@@ -867,6 +864,7 @@ iframe {
   justify-content: space-between;
 }
 .cart-checkout .cc-body .cart-side .cart-content .product-items .item-card .detail-info {
+  flex-basis: 250px;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -883,8 +881,11 @@ iframe {
   font-size: 15px;
   font-weight: 600;
   text-transform: uppercase;
+  width: 200px;
+  text-overflow: ellipsis;
 }
 .cart-checkout .cc-body .cart-side .cart-content .product-items .item-card .quantity {
+  flex-basis: 100px;
   position: relative;
 }
 .cart-checkout .cc-body .cart-side .cart-content .product-items .item-card .quantity input {
@@ -893,6 +894,9 @@ iframe {
   padding: 10px;
   border: 1px solid #002D3B;
   border-radius: 12px;
+}
+.cart-checkout .cc-body .cart-side .cart-content .product-items .item-card .price {
+  flex-basis: 150px;
 }
 .cart-checkout .cc-body .cart-side .cart-content .product-items .item-card .price span {
   display: flex;

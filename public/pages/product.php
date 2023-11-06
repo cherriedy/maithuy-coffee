@@ -149,9 +149,16 @@
                         <p class="original">GIÁ: <span><?php echo number_format($gia_sp, 0, '', ','); ?></span> VNĐ</p>
                     </div>
 
-                    <div class="buy">
-                        <a href="index.php?page=7&&id=<?php echo $ma_sp; ?>"><i class='bx bx-shopping-bag'></i></a>
-                    </div>
+                    <!-- <div class="buy">
+                        <a href="index.php?page=7&&id=<?php echo $ma_sp; ?>&&action=add"><i class='bx bx-shopping-bag'></i></a>
+                    </div> -->
+
+                    <form action="./pages/cart.php?action=add" method="post">
+                        <div class="buy">
+                            <input type="number" name="quantity[<?php echo $ma_sp;?>]" value="1" min="1" class="quantity-box">
+                            <button type="submit"><i class='bx bx-shopping-bag'></i></button>
+                        </div> 
+                    </form>
                 </div>
             </div>
         </div>

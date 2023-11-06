@@ -1,6 +1,6 @@
-@use '../abstracts/' as *;
-@use '../layout/' as *;
-@use '../components/' as *;
+@use '../abstracts/'as *;
+@use '../layout/'as *;
+@use '../components/'as *;
 
 .product-wrapper {
     width: 100%;
@@ -46,7 +46,7 @@
                     padding: .75rem;
                 }
             }
-        } 
+        }
 
         .product-type {
             display: flex;
@@ -128,7 +128,7 @@
                     font-weight: 700;
                     color: $primary-color;
                     margin-bottom: 3px;
-                } 
+                }
 
                 .product-des__name {
                     font-size: 13.5px;
@@ -182,24 +182,37 @@
                         }
                     }
 
+                    // .buy {
+                    //     width: 20px;
+                    //     height: 20px;
+                    //     padding: 20px;
+                    //     border-radius: 50%;
+                    //     background-color: $primary-color;
+                    //     display: flex;
+                    //     align-items: center;
+                    //     justify-content: center;
+                    //     transition: all .2s ease 0s;
+
+                    //     i {
+                    //         color: #f0f0f0;
+                    //     }
+
+                    //     &:hover {
+                    //         scale: .95;
+                    //     }
+                    // }
+
                     .buy {
-                        width: 20px;
-                        height: 20px;
-                        padding: 20px;
-                        border-radius: 50%;
-                        background-color: $primary-color;
                         display: flex;
                         align-items: center;
-                        justify-content: center;
-                        transition: all .2s ease 0s;
-                        
-                        i {
-                            color: #f0f0f0;
+                        justify-content: space-between;
+
+                        input {
+                            &.quantity-box {
+                                width: 50px;
+                            }
                         }
 
-                        &:hover {
-                            scale: .95;
-                        }
                     }
                 }
             }
@@ -213,7 +226,7 @@
         justify-content: center;
         margin-top: 32px;
         column-gap: 12px;
-        
+
         a {
             color: $primary-color;
             font-size: 1em;

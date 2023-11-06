@@ -51,10 +51,6 @@ if (isset($_GET["page"])) {
             include_once realpath(dirname(__FILE__)) . DS . 'pages/product.php';
             break;
 
-        case 7:
-            include_once realpath(dirname(__FILE__)) . DS . 'pages/cart.php';
-            break;
-
         case 4:
             include_once realpath(dirname(__FILE__)) . DS . 'pages/contact.php';
             break;

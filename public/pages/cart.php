@@ -1,125 +1,282 @@
 <?php
-session_begin();
-if(isset($_SESSION['cart'])) {
-    $_SESSION['cart'] = array(); 
+include_once realpath(dirname(__FILE__) . '/../../resources/config/config.php');
+include_once realpath(dirname(__FILE__) . '/../../resources/database/connect.php');
+include_once realpath(dirname(__FILE__) . '/../../resources/database/query.php');
+
+session_start();
+if (!isset($_SESSION['cart'])) {
+    $_SESSION['cart'] = array();
 }
 
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
+    // var_dump($_SESSION['cart']); exit();
+
+if (isset($_GET['action'])) {
+
+    function get_quantity($action = 'add') {
+        if($action == 'add') {
+            foreach($_POST['quantity'] as $id => $quantity) {
+                // Get quantity for each product
+                $_SESSION['cart'][$id] += $quantity;
+                // Get total quanity
+                $_SESSION['cart']['total'] += $quantity;
+            }
+        } elseif ($action == 'submit') {
+            // If user click update button
+            if (isset($_POST['updateBtn'])) {
+                $var_temp = 0;
+                foreach($_POST['quantity'] as $id => $quantity) {
+                    if ($quantity == 0) {
+                        // If quantity equals to 0 
+                        // ==> delete old quantity in total
+                        $_SESSION['cart']['total'] -= $_SESSION['cart'][$id];
+                        // Unset to delete from cart
+                        unset($_SESSION['cart'][$id]);
+                    }
+                    else {
+                        $_SESSION['cart'][$id] = $quantity;
+                        $var_temp += $quantity;
+                    }
+                }
+                // Update cart total quantity
+                $_SESSION['cart']['total'] = $var_temp;
+            }
+            // If user click checkout button
+            elseif (isset($_POST['checkoutBtn'])) {
+            }
+        } elseif ($action = 'delete') {
+            // If the product is deleted 
+            // ==> delete its quantity from total
+            $_SESSION['cart']['total'] -= $_SESSION['cart'][$_GET['id']];
+        }
+    }
+
+    switch ($_GET['action']) {
+        case 'add':
+            get_quantity($_GET['action']);
+            header('location: cart.php');
+            break;
+
+        case 'delete':
+            get_quantity($_GET['action']);
+
+            if(isset($_GET['id'])) {
+                unset($_SESSION['cart'][$_GET['id']]);
+            }
+
+            header('location: cart.php');
+
+            break;
+        
+        case 'submit':
+            $error = "";
+            if (empty($_POST['name'])) {
+                $error .= "Vui lòng nhập họ và tên\\n";
+            }
+
+            if (empty($_POST['email'])) {
+                $error .= "Vui lòng email liên hệ\\n";
+            }
+
+            if (empty($_POST['phone'])) {
+                $error .= "Vui lòng số điện thoại\\n";
+            }
+
+            if (empty($_POST['address'])) {
+                $error .= "Vui lòng địa chỉ nhận hàng\\n";
+            }
+
+            get_quantity($_GET['action']);
+            break;
+    }
 }
 
 $tb_sp = $TABLE['sp'];
+$tb_lsp = $TABLE['lsp'];
+$tb_nsp = $TABLE['nsp'];
 
 $conn = db_connect();
-$sql = "SELECT * FROM $tb_sp";
 
-$row = db_fetch_assoc(db_query($conn, $sql));
+$keys_with_quotes = array_map(function($key) {return "\"$key\"";}, array_keys($_SESSION['cart']));
+
+$sql = "SELECT * 
+        FROM $tb_sp
+        WHERE `MA_SP` IN (".implode(',', $keys_with_quotes).")";
+$result = db_query($conn, $sql);
 
 ?>
-<div class="cart-checkout">
-    <form action="" method="post" id="basic-info">
-        <div class="m-wrapper">
-            <div class="cc-body">
-                <div class="cart-side">
-                    <div class="cart-header">
-                        <a href="index.php?page=3">
-                            <i class='bx bx-arrow-back'></i>
-                            <span>Tiếp tục mua hàng</span>
-                        </a>
+
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="./../css/style.css">
+    
+</head>
+
+<body>
+    <div class="cart-checkout">
+        <form action="cart.php?action=submit" method="post" id="basic-info" autocomplete="on">
+            <div class="m-wrapper">
+                <div class="cc-body">
+                    <div class="cart-side">
+                        <div class="cart-header">
+                            <a href="./../index.php?page=3">
+                                <i class='bx bx-arrow-back'></i>
+                                <span>Tiếp tục mua hàng</span>
+                            </a>
+                            <button type="submit" name="updateBtn" class="btn">Cập nhật</button>
+                        </div>
+                        
                         <div class="horizontal-line"></div>
-                    </div>
 
-                    <div class="cart-content">
-                        <div class="product-items">
-                            <div class="item-card">
-                                <div class="img-wrapper">
-                                    <img src="./../../upload/img/product.png" alt="prod-img">
-                                </div>
+                        <div class="cart-content">
+                            <div class="product-items">
+                                <?php 
+                                // Initialize total money with 0
+                                $total_money = 0;
+                                if (!empty($result)) {
+                                    while ($row = db_fetch_assoc($result)) 
+                                    {
+                                        $ma_sp = $row['MA_SP'];
+                                        $ma_lsp = $row['MA_LOAISP'];
+                                        $ma_nsp = $row['MA_NHOMSP'];
+                                        $ten_sp = $row['TEN_SP'];
+                                        $gia_sp = $row['GIA_SP'];
+                                        $xuat_xu = $row['XUATXU'];
+                                        $hinh_sp = $row['TEN_HINHSP'];
 
-                                <div class="detail-info">
-                                    <div class="attr">
-                                        <span class="type">Arabica</span>
-                                        <span class="group">Bột</span>
+                                        $sql_select_ten_nsp = "SELECT TEN_NHOMSP FROM $tb_nsp WHERE MA_NHOMSP = '$ma_nsp'";
+                                        $sql_select_ten_lsp = "SELECT TEN_LOAISP FROM $tb_lsp WHERE MA_LOAISP = '$ma_lsp'";
+
+                                        $ten_nsp = db_fetch_assoc(db_query($conn, $sql_select_ten_nsp))['TEN_NHOMSP'];
+                                        $ten_lsp = db_fetch_assoc(db_query($conn, $sql_select_ten_lsp))['TEN_LOAISP'];
+                                ?>
+                                <div class="item-card">
+                                    <div class="img-wrapper">
+                                        <img src="./../../upload/img/<?php echo $hinh_sp ?>" alt="prod-img">
                                     </div>
-                                    <span class="name">Cà phê Columbia Premium</span>
-                                </div>
 
-                                <div class="quantity">
-                                    <input type="number" name="quantity[<?php echo $id; ?>]" class="input-box quantity" min="1" value="1">
-                                </div>
+                                    <div class="detail-info">
+                                        <div class="attr">
+                                            <span class="type"><?php echo $ten_lsp; ?></span>
+                                            <span class="group"><?php echo $ten_nsp; ?></span>
+                                        </div>
+                                        <span class="name"><?php echo $ten_sp ; ?></span>
+                                    </div>
 
-                                <div class="price">
-                                    <span class="price"><i class='bx bx-money'></i> 100.000đ</span>
-                                </div>
+                                    <div class="quantity">
+                                        <input type="number" name="quantity[<?php echo $ma_sp; ?>]"
+                                            class="input-box quantity" min="0" value="<?php echo $_SESSION['cart'][$ma_sp];?>">
+                                    </div>
 
-                                <div class="action">
-                                    <div class="remove">
-                                        <i class='bx bx-trash'></i>
+                                    <div class="price">
+                                        <span class="price">
+                                            <?php echo number_format($gia_sp * $_SESSION['cart'][$ma_sp], 0, '', ','); ?> đ
+                                        </span>
+                                    </div>
+
+                                    <div class="action">
+                                        <div class="remove">
+                                            <a href="cart.php?action=delete&&id=<?php echo $ma_sp ; ?>"><i class='bx bx-trash'></i></a>
+                                        </div>
                                     </div>
                                 </div>
+
+                                <div class="horizontal-line"></div>
+                            <?php
+                                    // Calculate total money in cart
+                                    $total_money += $gia_sp * $_SESSION['cart'][$ma_sp];
+                                }
+                            }
+                            ?>
                             </div>
                         </div>
 
-                        <div class="horizontal-line"></div>
-
-                    </div>
-                </div>
-
-                <div class="checkout-side">
-                    <div class="checkout-header">
-                        <h2>Thông tin thanh toán</h2>
                     </div>
 
-                    <div class="horizontal-line white"></div>
-
-                    <!-- <form action="" method="post" id="basic-info"> -->
-                    <div class="info-form">
-                        <div class="input-form">
-                            <label for="name">Tên khách hàng</label>
-                            <input type="text" name="name" placeholder="Tên khách hàng" class="input-box text">
+                    <div class="checkout-side">
+                        <div class="checkout-header">
+                            <h2>Thông tin thanh toán</h2>
                         </div>
 
-                        <div class="input-form">
-                            <label for="address">Địa chỉ nhận hàng</label>
-                            <input type="text" name="address" placeholder="Địa chỉ nhận hàng" class="input-box text">
+                        <div class="horizontal-line white"></div>
+
+                        <div class="info-form">
+                            <div class="input-form">
+                                <label for="name">Tên khách hàng</label>
+                                <input type="text" name="name" placeholder="Tên khách hàng" class="input-box text" >
+                            </div>
+
+                            <div class="input-form">
+                                <label for="email">Email liên hệ</label>
+                                <input type="email" name="email" placeholder="Email liên hệ" class="input-box text">
+                            </div>
+
+                            <div class="input-form">
+                                <label for="phone">Số điện thoại</label>
+                                <input type="tel" name="phone" placeholder="Số điện thoại" class="input-box text" >
+                            </div>
+
+                            <div class="input-form">
+                                <label for="address">Địa chỉ nhận hàng</label>
+                                <input type="text" name="address" placeholder="Địa chỉ nhận hàng" class="input-box text">
+                            </div>
+
                         </div>
 
-                        <div class="input-form">
-                            <label for="note">Ghi chú</label>
-                            <textarea name="note" rows="5" class="textarea-box" style="resize: none;"></textarea>
+                        <div class="horizontal-line white"></div>
+
+                        <div class="info-form">
+                            <div class="price-box">
+                                <span class="title">Đơn giá</span>
+                                <span class="price"><?php echo number_format($total_money, 0, '', ','); ?> đ</span>
+                            </div>
+
+                            <div class="price-box">
+                                <span class="title">Vận chuyển</span>
+                                <?php
+                                if ($_SESSION['cart']['total'] >= 10 || $_SESSION['cart']['total'] == 0) {
+                                    $shipping_fee = 0;
+                                } else {
+                                    $shipping_fee = $total_money * .05;
+                                }
+                                ?>
+                                <span class="price"><?php echo number_format($shipping_fee, 0, '', ','); ?> đ</span>
+                            </div>
+
+                            <div class="price-box">
+                                <span class="title">Tổng cộng</span>
+                                <span class="price"><?php echo number_format($total_money + $shipping_fee, 0, '', ','); ?> đ</span>
+                            </div>
                         </div>
-                    </div>
-                    <!-- </form> -->
 
-                    <div class="horizontal-line white"></div>
+                        <div class="horizontal-line transparent"></div>
 
-                    <div class="info-form">
-                        <div class="price-box">
-                            <span class="title">Đơn giá</span>
-                            <span class="price">$4798.00</span>
+                        <div class="checkout-btn">
+                            <button type="submit" name="checkoutBtn">
+                                <span class="total-price"><?php echo number_format($total_money + $shipping_fee, 0, '', ','); ?> đ</span>
+                                <span class="btn">Thanh toán <i class='bx bx-right-arrow-alt'></i></span>
+                            </button>
+                            <span class="error-msg" style="color:'#fff';">
+                                <?php 
+                                if (isset($error)) { 
+                                    echo  "<script>alert('" . $error . "')</script>" ;
+                                    echo "<script>window.location.href = 'cart.php'</script>";
+                                }
+                                ?>
+                            </span>
                         </div>
-
-                        <div class="price-box">
-                            <span class="title">Vận chuyển</span>
-                            <span class="price">$4798.00</span>
-                        </div>
-
-                        <div class="price-box">
-                            <span class="title">Tổng cộng</span>
-                            <span class="price">$4798.00</span>
-                        </div>
-                    </div>
-
-                    <div class="horizontal-line transparent"></div>
-
-                    <div class="checkout-btn">
-                        <button type="submit" name="submit-btn">
-                            <span class="total-price">$4798.00</span>
-                            <span class="btn">Thanh toán <i class='bx bx-right-arrow-alt'></i></span>
-                        </button>
                     </div>
                 </div>
             </div>
-        </div>
-    </form>
-</div>
+        </form>
+    </div>
+</body>
+
+</html>

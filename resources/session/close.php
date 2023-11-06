@@ -6,7 +6,8 @@
     // Sau đó điều hướng về index.php
     function session_close() {
         if (isset($_SESSION['email_logged'])) {
-            unset($_SESSION['email_logged']);
+            // unset($_SESSION['email_logged']);
+            session_destroy();
         }
         else {
             die('Chưa đăng nhập !');

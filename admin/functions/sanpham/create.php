@@ -17,8 +17,7 @@ $sql = "SELECT MA_SP
 $result = db_fetch_assoc(db_query($conn, $sql))['MA_SP'];
 $lastID = (int)filter_var($result, FILTER_SANITIZE_NUMBER_INT);
 
-function generateID($lastID)
-{
+function generateID($lastID) {
     $newID = $lastID + 1;
     if ($newID >= 0 && $newID < 10) {
         return 'SP' . '00' . $newID;

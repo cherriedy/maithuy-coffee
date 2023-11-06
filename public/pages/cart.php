@@ -8,48 +8,71 @@ if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = array();
 }
 
-    // var_dump($_SESSION['cart']); exit();
 
-if (isset($_GET['action'])) {
+$tb_sp = $TABLE['sp'];
+$tb_lsp = $TABLE['lsp'];
+$tb_nsp = $TABLE['nsp'];
+$tb_hd = $TABLE['hd'];
+$tb_cthd = $TABLE['cthd'];
 
-    function get_quantity($action = 'add') {
-        if($action == 'add') {
-            foreach($_POST['quantity'] as $id => $quantity) {
-                // Get quantity for each product
-                $_SESSION['cart'][$id] += $quantity;
-                // Get total quanity
-                $_SESSION['cart']['total'] += $quantity;
-            }
-        } elseif ($action == 'submit') {
-            // If user click update button
-            if (isset($_POST['updateBtn'])) {
-                $var_temp = 0;
-                foreach($_POST['quantity'] as $id => $quantity) {
-                    if ($quantity == 0) {
-                        // If quantity equals to 0 
-                        // ==> delete old quantity in total
-                        $_SESSION['cart']['total'] -= $_SESSION['cart'][$id];
-                        // Unset to delete from cart
-                        unset($_SESSION['cart'][$id]);
-                    }
-                    else {
-                        $_SESSION['cart'][$id] = $quantity;
-                        $var_temp += $quantity;
-                    }
-                }
-                // Update cart total quantity
-                $_SESSION['cart']['total'] = $var_temp;
-            }
-            // If user click checkout button
-            elseif (isset($_POST['checkoutBtn'])) {
-            }
-        } elseif ($action = 'delete') {
-            // If the product is deleted 
-            // ==> delete its quantity from total
-            $_SESSION['cart']['total'] -= $_SESSION['cart'][$_GET['id']];
+$conn = db_connect();
+
+function get_quantity($action = 'add') {
+    if($action == 'add') {
+        foreach($_POST['quantity'] as $id => $quantity) {
+            // Get quantity for each product
+            $_SESSION['cart'][$id] += $quantity;
+            // Get total quanity
+            $_SESSION['cart']['total'] += $quantity;
         }
+    } elseif ($action == 'submit') {
+        if (isset($_POST['updateBtn'])) {
+            $var_temp = 0;
+            foreach($_POST['quantity'] as $id => $quantity) {
+                if ($quantity == 0) {
+                    // If quantity equals to 0 
+                    // ==> delete old quantity in total
+                    $_SESSION['cart']['total'] -= $_SESSION['cart'][$id];
+                    // Unset to delete from cart
+                    unset($_SESSION['cart'][$id]);
+                }
+                else {
+                    $_SESSION['cart'][$id] = $quantity;
+                    $var_temp += $quantity;
+                }
+            }
+            // Update cart total quantity
+            $_SESSION['cart']['total'] = $var_temp;
+        }
+    } elseif ($action = 'delete') {
+        // If the product is deleted 
+        // ==> delete its quantity from total
+        $_SESSION['cart']['total'] -= $_SESSION['cart'][$_GET['id']];
+    }
+}
+
+function get_implode($array_keys) {
+    $array_keys = array_map(function($key) {return "\"$key\"";}, $array_keys);
+    return implode(',', $array_keys);
+}
+
+function generateID($conn, $table, $column, $id) {
+    $sql = "SELECT $column FROM $table ORDER BY $column DESC LIMIT 1";
+    $result = db_fetch_assoc(db_query($conn, $sql))[$column];
+    $lastID = (int)filter_var($result, FILTER_SANITIZE_NUMBER_INT);
+
+    $newID = $lastID + 1;
+
+    if ($newID >= 0 && $newID < 10) {
+        return $id . '00' . $newID;
     }
 
+    if ($newID >= 10 && $newID < 100) {
+        return $id . '0' . $newID;
+    }
+}
+
+if (isset($_GET['action'])) {
     switch ($_GET['action']) {
         case 'add':
             get_quantity($_GET['action']);
@@ -58,51 +81,106 @@ if (isset($_GET['action'])) {
 
         case 'delete':
             get_quantity($_GET['action']);
-
             if(isset($_GET['id'])) {
                 unset($_SESSION['cart'][$_GET['id']]);
             }
-
             header('location: cart.php');
-
             break;
         
         case 'submit':
-            $error = "";
-            if (empty($_POST['name'])) {
-                $error .= "Vui lòng nhập họ và tên\\n";
-            }
+            // If user click checkout button
+            if (isset($_POST['checkoutBtn'])) {
+                // Variable to store error message
 
-            if (empty($_POST['email'])) {
-                $error .= "Vui lòng email liên hệ\\n";
-            }
 
-            if (empty($_POST['phone'])) {
-                $error .= "Vui lòng số điện thoại\\n";
-            }
+                $error = "";
 
-            if (empty($_POST['address'])) {
-                $error .= "Vui lòng địa chỉ nhận hàng\\n";
-            }
+                if ($_SESSION['cart']['total'] == 0) {
+                    $error .= "Giỏ hàng rỗng"; 
+                } else {
+                    if (empty($_POST['name'])) {
+                        $error .= "Vui lòng nhập họ và tên\\n";
+                    }
+                    if (empty($_POST['email'])) {
+                        $error .= "Vui lòng email liên hệ\\n";
+                    }
+                    if (empty($_POST['phone'])) {
+                        $error .= "Vui lòng số điện thoại\\n";
+                    } 
+                    if (empty($_POST['address'])) {
+                        $error .= "Vui lòng địa chỉ nhận hàng\\n";
+                    } 
+                }
+               
+                // Proccesing cart
+                if ($error == "" && $_SESSION['cart']['total'] > 0) {
+                    $result = db_query($conn, "SELECT * FROM $tb_sp WHERE `MA_SP` IN (".get_implode(array_keys($_SESSION['cart'])).")");
+                    // Variable to store total money to insert into database
+                    $total_money = 0;
+                    // Order's ID
+                    $orderID = generateID($conn, $tb_hd, 'MA_HD', 'HD');
 
-            get_quantity($_GET['action']);
-            break;
+                    // Calculate total money
+                    // Get all rows of query statement 
+                    while ($row = db_fetch_assoc($result)) {
+                        $total_money += $row['GIA_SP'] * $_POST['quantity'][$row['MA_SP']];
+                        $orderProducts[] = $row;
+                    }
+
+                    // Variable to store each orderProduct insert statement 
+                    $insertProductString = "";
+                    foreach ($orderProducts as $key => $orderProduct) {
+                        $productID = $orderProduct['MA_SP'];
+                        $productQuantity = $_POST['quantity'][$productID];
+                        $productPrice = $productQuantity * $orderProduct['GIA_SP'];
+
+                        $insertProductString .= "(NULL, '$orderID', '$productID' , $productQuantity, $productPrice)";
+                        if ($key != count($orderProducts) - 1) {
+                            $insertProductString .= ', ';
+                        }
+                    }
+
+                    // Customer's name
+                    $name = $_POST['name'];
+                    // Customer's email
+                    $email = $_POST['email'];
+                    // Customer's phone
+                    $phone  = $_POST['phone'];
+                    // Customer's address
+                    $address = $_POST['address'];
+
+                    // Insert order into danhsach_hoadon
+                    $insertOrder = db_query($conn, "INSERT INTO $tb_hd VALUES('$orderID', '$name', '$email', '$phone', '$address', '$total_money', ' ')");
+                    // Insert product(s) into chitiet_hoadon
+                    $insertDetailOrder = db_query($conn, "INSERT INTO $tb_cthd VALUES $insertProductString");
+                    // If insert successfuly ==> delete product in cart
+                    if ($insertOrder && $insertDetailOrder) {
+                        foreach (array_keys($_POST['quantity']) as $id) {
+                            unset($_SESSION['cart'][$id]);
+                            $_SESSION['cart']['total'] = 0;
+                        }
+                        header('location: cart.php');
+
+
+
+                            // echo "<pre>";
+                            // // var_dump($_SESSION['cart']['total']); exit;
+                            // var_dump($_SESSION['cart']); exit;
+                            // echo "</pre>";
+
+                    }
+            } else {
+                // If user click update button
+                get_quantity($_GET['action']);
+            }
+        }
+        break;
     }
 }
 
-$tb_sp = $TABLE['sp'];
-$tb_lsp = $TABLE['lsp'];
-$tb_nsp = $TABLE['nsp'];
-
-$conn = db_connect();
-
-$keys_with_quotes = array_map(function($key) {return "\"$key\"";}, array_keys($_SESSION['cart']));
-
-$sql = "SELECT * 
-        FROM $tb_sp
-        WHERE `MA_SP` IN (".implode(',', $keys_with_quotes).")";
+$sql = "SELECT * FROM $tb_sp WHERE `MA_SP` IN (".get_implode(array_keys($_SESSION['cart'])).")";
+        // WHERE `MA_SP` IN (".implode(',', $keys_with_quotes).")";
 $result = db_query($conn, $sql);
-
 ?>
 
 <!DOCTYPE html>
@@ -148,7 +226,6 @@ $result = db_query($conn, $sql);
                                         $ma_nsp = $row['MA_NHOMSP'];
                                         $ten_sp = $row['TEN_SP'];
                                         $gia_sp = $row['GIA_SP'];
-                                        $xuat_xu = $row['XUATXU'];
                                         $hinh_sp = $row['TEN_HINHSP'];
 
                                         $sql_select_ten_nsp = "SELECT TEN_NHOMSP FROM $tb_nsp WHERE MA_NHOMSP = '$ma_nsp'";
@@ -220,7 +297,7 @@ $result = db_query($conn, $sql);
 
                             <div class="input-form">
                                 <label for="phone">Số điện thoại</label>
-                                <input type="tel" name="phone" placeholder="Số điện thoại" class="input-box text" >
+                                <input type="tel" name="phone" placeholder="Số điện thoại" class="input-box text" value="">
                             </div>
 
                             <div class="input-form">
@@ -265,7 +342,7 @@ $result = db_query($conn, $sql);
                             </button>
                             <span class="error-msg" style="color:'#fff';">
                                 <?php 
-                                if (isset($error)) { 
+                                if (isset($error) && $error != "") { 
                                     echo  "<script>alert('" . $error . "')</script>" ;
                                     echo "<script>window.location.href = 'cart.php'</script>";
                                 }

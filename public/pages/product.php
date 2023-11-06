@@ -143,7 +143,8 @@
 
                 <div class="prodcut-des__price-buy">
                     <div class="price">
-                        <?php $discount = $gia_sp - $gia_sp * .50; ?>
+                        <!-- <?php $discount = $gia_sp - $gia_sp * .50; ?> -->
+                        <?php $discount = $gia_sp ; ?>
                         <span class="discount"><?php echo number_format($discount, 0, '', ','); ?> VNĐ</span>
 
                         <p class="original">GIÁ: <span><?php echo number_format($gia_sp, 0, '', ','); ?></span> VNĐ</p>
@@ -155,6 +156,7 @@
 
                     <form action="./pages/cart.php?action=add" method="post">
                         <div class="buy">
+                            <!-- <input type="hidden" name="price" value="<?php echo $discount; ?>"> -->
                             <input type="number" name="quantity[<?php echo $ma_sp;?>]" value="1" min="1" class="quantity-box">
                             <button type="submit"><i class='bx bx-shopping-bag'></i></button>
                         </div> 

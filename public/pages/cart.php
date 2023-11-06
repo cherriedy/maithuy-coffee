@@ -30,8 +30,7 @@ function get_quantity($action = 'add') {
             $var_temp = 0;
             foreach($_POST['quantity'] as $id => $quantity) {
                 if ($quantity == 0) {
-                    // If quantity equals to 0 
-                    // ==> delete old quantity in total
+                    // If quantity equals to 0 ==> delete old quantity in total
                     $_SESSION['cart']['total'] -= $_SESSION['cart'][$id];
                     // Unset to delete from cart
                     unset($_SESSION['cart'][$id]);
@@ -91,8 +90,6 @@ if (isset($_GET['action'])) {
             // If user click checkout button
             if (isset($_POST['checkoutBtn'])) {
                 // Variable to store error message
-
-
                 $error = "";
 
                 if ($_SESSION['cart']['total'] == 0) {
@@ -159,20 +156,17 @@ if (isset($_GET['action'])) {
                             unset($_SESSION['cart'][$id]);
                             $_SESSION['cart']['total'] = 0;
                         }
-                        header('location: cart.php');
-
-
-
-                            // echo "<pre>";
-                            // // var_dump($_SESSION['cart']['total']); exit;
-                            // var_dump($_SESSION['cart']); exit;
-                            // echo "</pre>";
-
+                        echo "<script>
+                                alert('Đặt hàng thành công');
+                                window.location.href = 'cart.php';
+                              </script>";
+                        // header('location: cart.php');
                     }
-            } else {
-                // If user click update button
-                get_quantity($_GET['action']);
-            }
+            } 
+            
+        } else {
+            // If user click update button
+            get_quantity($_GET['action']);
         }
         break;
     }

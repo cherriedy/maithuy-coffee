@@ -35,6 +35,7 @@ include_once DIR_RESOURCE . DS . 'session' . DS . 'close.php';
 </head>
 
 <body>
+
     <!-- INCLUDE: MENU.PHP -->
 
     <!-- CONTROLLER: NAVIGATION -->
@@ -62,6 +63,11 @@ if (isset($_GET["page"])) {
         case 6:
             include_once realpath(dirname(__FILE__)) . DS . 'pages/register.php';
             break;
+
+        case 7:
+            include_once realpath(dirname(__FILE__)) . DS . 'pages/detailProduct.php';
+            break;
+
         default:
     }
 
@@ -76,7 +82,7 @@ if (isset($_GET["page"])) {
 
     <?php include_once realpath(dirname(__FILE__)) . DS . 'layout/footer.php';?>
 
-    <!-- SCRIPT: FONTAWESOME-->
+    <!-- SCRIPT: FONTAWESOME -->
     <script src="https://kit.fontawesome.com/7c9a6eab84.js" crossorigin="anonymous"></>
 
     <!-- SCRIPT: BOXICONS -->
@@ -94,6 +100,18 @@ if (isset($_GET["page"])) {
     <!-- SCRIPT: GENERAL -->
     <script src="./js/scripts.js"></script>
 
+<?php
+
+if (isset($_SESSION['email_logged'])) {
+    echo "
+        <script>
+            $('.navigation-wrapper header .navigation-content ul li.loginBtn').hide();
+            $('.navigation-wrapper header .navigation-content ul').append('<li class=cart><a href=./pages/cart.php/><img src=./img/icons/cart.png></a></li>');
+        </script>
+    ";
+}
+
+?>
 </body>
 
 </html>

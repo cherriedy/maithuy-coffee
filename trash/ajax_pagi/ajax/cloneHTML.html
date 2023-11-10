@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js" integrity="sha512-+k1pnlgt4F1H8L7t3z95o3/KO+o78INEcXTbnoJQ/F2VqDVhWoaiVml/OEHv9HsVgxUaVW+IbiZPUJQfF/YxZw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        function actionAddRow() {
+            /**
+             * $('#tableBody tr:last') : select tr:last in #tableBody
+             * .clone() : clone selected element
+             * .insertAfter('#tableBody tr:last') : insert clone element after #tableAfter tr:last
+            */
+            $('#tableBody tr:last').clone().insertAfter('#tableBody tr:last');
+        }
+
+        function actionDeleteRow() {
+            /**
+             * 
+             * Selects all the row <tr> in #tableBody
+             * For each row, if find any checkboxes in <tr>
+             * if (:checked) ==> remove entire <tr>
+             * 
+             * each(function(index, item)) {}
+             * index: the index position of selected element
+             * item: the current element, 'this' can be also used
+            */
+            $('#tableBody tr').each(function(index, item) {
+                $(':checkbox', this).each(function() {
+                    if ($(this).is(':checked')) {
+                        $(item).remove();
+                    }
+                });
+            });
+        }
+    </script>
+
+</head>
+
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th>Item Name</th>
+                <th>Item Price</th>
+            </tr>
+        </thead>
+
+        <tbody id="tableBody">
+            <tr>
+                <td><input type="checkbox" name="checkbox"></td>
+                <td><input type="text" name="name" placeholder="Nhap ten"></td>
+                <td><input type="text" name="name" placeholder="Nhap ten"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="buttons">
+        <input type="button" value="ADD" name="add" onclick="actionAddRow();">
+        <input type="button" value="DELETE" name="delete" onclick="actionDeleteRow();">
+    </div>
+</body>
+
+</html>

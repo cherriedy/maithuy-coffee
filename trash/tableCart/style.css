@@ -1,168 +1,80 @@
-@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@600;700;800&family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap");
 * {
   margin: 0;
   padding: 0;
   text-decoration: none;
-  list-style-type: none;
-  font-family: "Roboto", sans-serif;
+  box-sizing: border-box;
+}
+
+.lg-cs {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  vertical-align: middle;
+  margin-right: 8px;
 }
 
 body {
-  padding: 80px 100px;
-}
-
-img {
-  width: 65px;
-  height: 65px;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-
-.m-wrapper {
-  width: 100%;
-  margin: 0 auto;
-}
-
-.cart-section .cart-body {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  gap: 32px;
-}
-.cart-section .cart-body .cart-table {
-  width: calc(78% - 32px);
-  background-color: #f8f8f8;
-  border-radius: 4px;
-}
-.cart-section .cart-body .cart-table table {
-  width: 100%;
-  border-collapse: collapse;
-}
-.cart-section .cart-body .cart-table table th,
-.cart-section .cart-body .cart-table table td {
-  padding: 1rem;
-}
-.cart-section .cart-body .cart-table table .product-detail {
-  width: calc(250px - 1rem);
-}
-.cart-section .cart-body .cart-table table .product-detail .first-cell {
+  height: 100vh;
   display: flex;
   align-items: center;
-  gap: 12px;
-}
-.cart-section .cart-body .cart-table table .product-detail .first-cell .detail-info ul li.name {
-  margin-bottom: 8px;
-}
-.cart-section .cart-body .cart-table table .product-detail .first-cell .detail-info ul li.name a {
-  font-size: 1rem;
-  font-weight: 300;
-  text-transform: capitalize;
-  text-overflow: ellipsis;
-}
-.cart-section .cart-body .cart-table table .product-detail .first-cell .detail-info ul li.text-content {
-  font-size: 12px;
-  margin-bottom: 4px;
-}
-.cart-section .cart-body .cart-table table .product-detail .first-cell .detail-info ul li.text-content span {
-  font-size: 13px;
-  font-weight: 500;
-}
-.cart-section .cart-body .cart-table table .price {
-  display: flex;
-  flex-direction: column;
-}
-.cart-section .cart-body .cart-table table .price h4.title {
-  font-size: 14px;
-  font-weight: 300;
-  color: #4a5568;
-  margin-bottom: 8px;
-}
-.cart-section .cart-body .cart-table table .price h5 {
-  font-size: 1rem;
-  margin-bottom: 4px;
-}
-.cart-section .cart-body .cart-table table .price h5.price-content span.discount {
-  color: #002D3B;
-}
-.cart-section .cart-body .cart-table table .price h5.price-content span.original {
-  text-decoration: line-through;
-  color: #4a5568;
-  font-weight: 300;
-  font-size: 12px;
-}
-.cart-section .cart-body .cart-table table .price h6.saving {
-  color: #002D3B;
-  font-size: 0.85rem;
-  font-weight: 600;
-}
-.cart-section .cart-body .cart-table table .quantity .title {
-  font-size: 14px;
-  font-weight: 300;
-  color: #4a5568;
-  margin-bottom: 8px;
-}
-.cart-section .cart-body .sidebar-total {
-  width: 22%;
-  display: flex;
-  flex-direction: column;
-  background-color: #f8f8f8;
-  border-radius: 4px;
-}
-.cart-section .cart-body .sidebar-total .sidebar-wrapper {
-  width: 100%;
-}
-.cart-section .cart-body .sidebar-total .sidebar-wrapper .horizontal-line {
-  width: 100%;
-  border-bottom: 1px solid #ececec;
-}
-.cart-section .cart-body .sidebar-total .sidebar-wrapper .total-title h3 {
-  padding: 14px 16px;
-  font-weight: 500;
-}
-.cart-section .cart-body .sidebar-total .sidebar-wrapper .summary-cost {
-  padding: 14px 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-.cart-section .cart-body .sidebar-total .sidebar-wrapper .summary-cost .item {
-  display: flex;
-  justify-content: space-between;
-}
-.cart-section .cart-body .sidebar-total .sidebar-wrapper .summary-cost .item span {
-  font-size: 15px;
-  font-weight: 300;
-  color: #4a5568;
-}
-.cart-section .cart-body .sidebar-total .sidebar-wrapper .total-buyBtn {
-  padding: 14px 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-.cart-section .cart-body .sidebar-total .sidebar-wrapper .total-buyBtn .item {
-  display: flex;
-  justify-content: space-between;
-}
-.cart-section .cart-body .sidebar-total .sidebar-wrapper .total-buyBtn .item span {
-  font-size: 1.3rem;
-  font-weight: 500;
-}
-.cart-section .cart-body .sidebar-total .sidebar-wrapper .total-buyBtn .item span.title {
-  color: #000;
-}
-.cart-section .cart-body .sidebar-total .sidebar-wrapper .total-buyBtn .item span.cost {
-  color: #002D3B;
-}
-.cart-section .cart-body .sidebar-total .sidebar-wrapper .total-buyBtn .buyBtn {
-  display: flex;
   justify-content: center;
 }
-.cart-section .cart-body .sidebar-total .sidebar-wrapper .total-buyBtn .buyBtn a {
-  padding: 12px 24px;
-  background-color: #002D3B;
-  color: #fff;
-  font-size: 1.05rem;
-  font-weight: 500;
-  border-radius: 5px;
+
+.tb-section {
+  width: 82vw;
+  height: 90vh;
+  background-color: #002d3b;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.tb-section .tb-header {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(255, 255, 255, 0.2666666667);
+  padding: 0.8rem 1rem;
+}
+.tb-section .tb-body {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+.tb-section .tb-body::-webkit-scrollbar {
+  width: 0.5rem;
+  height: 0.2rem;
+}
+.tb-section .tb-body::-webkit-scrollbar-thumb:vertical {
+  border-radius: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.2666666667);
+  visibility: hidden;
+  height: 0.5rem;
+}
+.tb-section .tb-body th, .tb-section .tb-body td, .tb-section .tb-body table {
+  padding: 1rem;
+  border-collapse: collapse;
+  text-align: left;
+}
+.tb-section .tb-body table {
+  width: 100%;
+}
+.tb-section .tb-body thead th {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+  text-transform: capitalize;
+  background-color: rgba(213, 209, 222, 0.9960784314);
+}
+.tb-section .tb-body tbody {
+  width: 95%;
+  max-height: calc(89% - 1.6rem);
+  background-color: rgba(255, 255, 255, 0.7333333333);
+  margin: 0.8rem auto;
+  overflow: auto;
+}
+.tb-section .tb-body tbody tr:nth-child(even) {
+  background-color: rgba(0, 0, 0, 0.0431372549);
 }

@@ -1,0 +1,190 @@
+.m-auto {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.dProd-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px;
+    background-color: #002D3B;
+
+    .dProd-card {
+        min-height: 100vh;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        background-color: #fff;
+        border-radius: 8px;
+        overflow: hidden;
+
+        .img-wrapper {
+            width: 100%;
+            height: 100vh;
+
+            .lg-dProd {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        .dProd-detail {
+            width: 100%;
+            height: 100%;
+            padding: 48px;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+
+            .dProd-detail__title {
+                display: flex;
+                flex-direction: column;
+
+                .dProd-detail__tags {
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    cursor: pointer;
+
+                    .tag {
+                        padding: 4px 8px;
+                        border-radius: 100px;
+                        text-transform: uppercase;
+                        font-size: 12px;
+                        margin-bottom: 4px;
+
+                        &.green {
+                            background-color: #dff5e7 !important;
+                        }
+
+                        &.blue {
+                            background-color: #eef7ff !important;
+                        }
+                    }
+                }
+
+                .dProd-detail__brand {
+                    font-size: 1rem;
+                    font-weight: 500;
+                }
+
+                h1 {
+                    color: #3D3D4E;
+                    font-size: 2.5rem;
+                    font-weight: 600;
+                    margin-bottom: 4px;
+                }
+
+                .dProd-detail__stars-reviews {
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                    gap: 12px;
+                    font-size: 1rem;
+
+                    .star-items {
+                        color: orange;
+                    }
+
+                    .reviews {
+                        color: gray;
+                    }
+                }
+            }
+
+
+            .dProd-detail__price {
+                color: #3D3D4E;
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+
+                .price__original {
+                    font-size: 1rem;
+                    text-decoration: line-through;
+                    margin-right: 1rem;
+                }
+
+                .price__discount-off {
+                    color: #002D3B;
+
+                    .discount {
+                        font-size: 2.5rem;
+                        font-weight: 500;
+                    }
+
+                    .off {
+                        font-size: .875rem;
+                        margin-left: 4px;
+                    }
+                }
+            }
+
+            .dProd-detail__des {
+                width: 100%;
+                height: auto;
+                line-height: 1.5rem;
+                color: gray;
+            }
+
+            .dProd-detail__quantity {
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+
+                .title {
+                    color: gray;
+                    font-size: 1.2rem;
+                    font-weight: 600;
+                }
+
+                .input-box {
+                    width: 115px;
+                    border: 1px solid gray;
+                    padding: 12px 16px;
+                    border-radius: 4px;
+
+                    input {
+                        width: 100%;
+                        outline: none;
+                        border: none;
+                        font-size: 1rem;
+                        font-weight: 600;
+                        color: gray;
+
+                        -webkit-appearance: textfield;
+                        -moz-appearance: textfield;
+                        appearance: textfield;
+
+                    }
+                }
+            }
+
+            .dProd-detail__buy {
+                margin-top: 1rem;
+
+                .btn {
+                    height: 55px;
+                    outline: none;
+                    border: none;
+                    border-radius: 4px;
+                    padding: 8px 16px;
+                    font-size: 1rem;
+                    font-weight: 600;
+                    color: #fff;
+                    background-color: #002D3B;
+                    text-transform: uppercase;
+                    cursor: pointer;
+                    transition: all .2s ease 0s;
+
+                    &:hover {
+                        scale: .98;
+                    }
+                }
+            }
+        }
+    }
+
+}

@@ -1,0 +1,169 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+.m-auto {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.dProd-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100px;
+  background-color: #002D3B;
+}
+.dProd-section .dProd-card {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.dProd-section .dProd-card .img-wrapper {
+  width: 100%;
+  height: 100vh;
+}
+.dProd-section .dProd-card .img-wrapper .lg-dProd {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.dProd-section .dProd-card .dProd-detail {
+  width: 100%;
+  height: 100%;
+  padding: 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.dProd-section .dProd-card .dProd-detail .dProd-detail__title {
+  display: flex;
+  flex-direction: column;
+}
+.dProd-section .dProd-card .dProd-detail .dProd-detail__title .dProd-detail__tags {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+.dProd-section .dProd-card .dProd-detail .dProd-detail__title .dProd-detail__tags .tag {
+  padding: 4px 8px;
+  border-radius: 100px;
+  text-transform: uppercase;
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+.dProd-section .dProd-card .dProd-detail .dProd-detail__title .dProd-detail__tags .tag.green {
+  background-color: #dff5e7 !important;
+}
+.dProd-section .dProd-card .dProd-detail .dProd-detail__title .dProd-detail__tags .tag.blue {
+  background-color: #eef7ff !important;
+}
+.dProd-section .dProd-card .dProd-detail .dProd-detail__title .dProd-detail__brand {
+  font-size: 1rem;
+  font-weight: 500;
+}
+.dProd-section .dProd-card .dProd-detail .dProd-detail__title h1 {
+  color: #3D3D4E;
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.dProd-section .dProd-card .dProd-detail .dProd-detail__title .dProd-detail__stars-reviews {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+  font-size: 1rem;
+}
+.dProd-section .dProd-card .dProd-detail .dProd-detail__title .dProd-detail__stars-reviews .star-items {
+  color: orange;
+}
+.dProd-section .dProd-card .dProd-detail .dProd-detail__title .dProd-detail__stars-reviews .reviews {
+  color: gray;
+}
+.dProd-section .dProd-card .dProd-detail .dProd-detail__price {
+  color: #3D3D4E;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.dProd-section .dProd-card .dProd-detail .dProd-detail__price .price__original {
+  font-size: 1rem;
+  text-decoration: line-through;
+  margin-right: 1rem;
+}
+.dProd-section .dProd-card .dProd-detail .dProd-detail__price .price__discount-off {
+  color: #002D3B;
+}
+.dProd-section .dProd-card .dProd-detail .dProd-detail__price .price__discount-off .discount {
+  font-size: 2.5rem;
+  font-weight: 500;
+}
+.dProd-section .dProd-card .dProd-detail .dProd-detail__price .price__discount-off .off {
+  font-size: 0.875rem;
+  margin-left: 4px;
+}
+.dProd-section .dProd-card .dProd-detail .dProd-detail__des {
+  width: 100%;
+  height: auto;
+  line-height: 1.5rem;
+  color: gray;
+}
+.dProd-section .dProd-card .dProd-detail .dProd-detail__quantity {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.dProd-section .dProd-card .dProd-detail .dProd-detail__quantity .title {
+  color: gray;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.dProd-section .dProd-card .dProd-detail .dProd-detail__quantity .input-box {
+  width: 115px;
+  border: 1px solid gray;
+  padding: 12px 16px;
+  border-radius: 4px;
+}
+.dProd-section .dProd-card .dProd-detail .dProd-detail__quantity .input-box input {
+  width: 100%;
+  outline: none;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  color: gray;
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+.dProd-section .dProd-card .dProd-detail .dProd-detail__buy {
+  margin-top: 1rem;
+}
+.dProd-section .dProd-card .dProd-detail .dProd-detail__buy .btn {
+  height: 55px;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: #002D3B;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s ease 0s;
+}
+.dProd-section .dProd-card .dProd-detail .dProd-detail__buy .btn:hover {
+  scale: 0.98;
+}

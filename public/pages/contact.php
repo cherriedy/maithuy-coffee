@@ -4,7 +4,7 @@
     <div class="contact-box">
         <div class="contact-box-left">
             <h3 style="color: #002B3D;">Nhập thông tin</h3>
-            <form method="post" action="./backend/functions/public/contact.php">
+            <form method="post" action="./functions/contact/contact.php">
                 <div class="input-row">
                     <div class="input-group">
                         <label>Họ và tên</label>

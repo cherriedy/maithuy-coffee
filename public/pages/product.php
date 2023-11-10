@@ -31,7 +31,7 @@
 
         <div class="right">
                 <div class="search-box">
-                    <form action="" method="get">
+                    <form action="index.php?page=3&&search=true" method="post">
                             <i class="bx bx-search-alt-2"></i>
                             <input type="search" name="keyword" placeholder="Nhập thông tin tìm kiếm">
                     </form>
@@ -45,7 +45,7 @@
          * Document the pagination function
          * 
          * $limit_per_page: The number of prods per page
-         * $num_of_products: The number of prods in database
+         * $num_of_products: The number of prods in databas
          * $num_of_pages: The number of pages
          */
         $limit_per_page = 4;
@@ -67,13 +67,13 @@
          * isset($_GET['pagination']) : get product by using pagination
          * isset($_GET['group']) : get product by using group
          */
-        if (isset($_GET['pagination'])) {
+        if (isset($_GET['search'])) {
+            $keyword =$_POST['keyword'];
+            $sql_select_prod = "SELECT * FROM $tb_sp WHERE TEN_SP LIKE '%$keyword%'";
+        } elseif (isset($_GET['pagination'])) {
             $sql_select_prod = "SELECT * FROM $tb_sp LIMIT {$start_row}, {$limit_per_page}";
-        }
-        elseif (isset($_GET['group'])) {
-            $group = $_GET['group'];
-
-            switch ($group) {
+        } elseif (isset($_GET['group'])) {
+            switch ($_GET['group']) {
                 case 1: 
                     $sql_select_prod = "SELECT * FROM $tb_sp WHERE MA_NHOMSP = 'N001'";
                     break;
@@ -117,7 +117,9 @@
         ?>
         <div class="product-card">
             <div class="img-wrapper">
-                <img src="./../upload/img/<?php echo $hinh_sp; ?>" alt="prod-img">
+                <a href="index.php?page=7&&id=<?php echo $ma_sp; ?>">
+                    <img src="./../upload/img/<?php echo $hinh_sp; ?>" alt="prod-img">
+                </a>
             </div>
 
             <div class="product-des">

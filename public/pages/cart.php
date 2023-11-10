@@ -163,7 +163,6 @@ if (isset($_GET['action'])) {
                         // header('location: cart.php');
                     }
             } 
-            
         } else {
             // If user click update button
             get_quantity($_GET['action']);

@@ -1,6 +1,3 @@
-trash
-public/css/scss
-admin/css/scss
-admin/tests
-.vscode
-shared/pages
+trash/
+.vscode/
+**/scss

@@ -2,7 +2,7 @@
     <div class="row-wrapper">
         <div class="footer-info">
             <div class="img-wrapper">
-                <img src="logo.png" alt="logo">
+                <img src="./img/logo_3.png" alt="logo">
             </div>
 
             <div class="contact-phone">
@@ -11,9 +11,9 @@
                     <p>Tổng đài hỗ trợ: 7AM - 10PM</p>
                 </a>
 
-                <a href="mailto:contact@mioto.vn" class="item">
-                    <p class="main">contact@mioto.vn</p>
-                    <p>Gửi mail cho Mioto</p>
+                <a href="mailto:lienhe@maithuycoffee.vn" class="item">
+                    <p class="main">lienhe@maithuycoffee.vn</p>
+                    <p>Gửi mail cho Maithuy</p>
                 </a>
             </div>
 
@@ -73,7 +73,7 @@
         <div class="footer-info">
             <div class="contact-phone">
                 <a class="item">
-                    <p>© Công ty Cổ Phần Mioto Asia</p>
+                    <p>© Hộ kinh doanh MAITHUY Coffee</p>
                 </a>
             </div>
         </div>
@@ -116,7 +116,7 @@
         <div class="footer-path three-items">
             <div class="item">
                 <div class="sub-item">
-                    <p>Tên TK: CT CP MIOTO ASIA</p>
+                    <p>Tên TK: CÀ PHÊ MAITHUY</p>
                 </div>
             </div>
 

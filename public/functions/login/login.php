@@ -25,7 +25,8 @@
             header('location: ../../../admin/index.php');
         }
         else {
-            echo "<script>alert('THAT BAI');</script>";
+            // echo "<script>alert('THAT BAI');</script>";
+            header('location: ../../../admin/index.php?page=5');
         }
     }
 ?>

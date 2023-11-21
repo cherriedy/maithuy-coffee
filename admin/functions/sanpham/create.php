@@ -144,9 +144,15 @@ function generateID($lastID) {
 
 <?php
 if (isset($_POST['submit-btn'])) {
-    $img_folder_path = realpath(dirname(__FILE__) . '/../../../upload/img/');
-    $img_name = $img_folder_path . $_FILES['image']['name'];
-    move_uploaded_file($_FILES['image']['tmp_name'], $img_name);
+    // $img_folder_path = "/../../../upload/img/";
+    $img_folder_path = dirname(__FILE__) . '/../../../upload/img/';
+    $img_upload_path = $img_folder_path . basename($_FILES['image']['name']);
+    move_uploaded_file($_FILES['image']['tmp_name'], $img_upload_path);
+
+    // echo "<pre>";
+    // var_dump($img_folder_path);
+    // var_dump($img_upload_path);
+    // echo "</pre>";exit;
 
     $prodid = $_POST['id'];
     $name = $_POST['name'];

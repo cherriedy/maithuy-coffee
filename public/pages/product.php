@@ -35,7 +35,7 @@
                             <i class="bx bx-search-alt-2"></i>
                             <input type="search" name="keyword" placeholder="Nhập thông tin tìm kiếm">
                     </form>
-                </div>
+                </div>/
         </div>
     </div>
 

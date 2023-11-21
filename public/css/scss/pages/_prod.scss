@@ -206,10 +206,35 @@
                         display: flex;
                         align-items: center;
                         justify-content: space-between;
+                        position: relative;
 
                         input {
                             &.quantity-box {
-                                width: 50px;
+                                width: 100px;
+                                height: 44px;
+                                border: 1px solid $primary-color;
+                                border-radius: 32px;
+                                padding-left: 18px;
+                                font-size: 1rem;
+                            }
+                        }
+
+                        button {
+                            width: 20px;
+                            height: 20px;
+                            padding: 20px;
+                            border-radius: 50%;
+                            background-color: $primary-color;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            transition: all .2s ease 0s;
+                            position: absolute;
+                            right: 0;
+                            cursor: pointer;
+
+                            i {
+                                color: #f0f0f0;
                             }
                         }
 

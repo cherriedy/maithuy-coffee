@@ -172,7 +172,6 @@ if (isset($_GET['action'])) {
 }
 
 $sql = "SELECT * FROM $tb_sp WHERE `MA_SP` IN (".get_implode(array_keys($_SESSION['cart'])).")";
-        // WHERE `MA_SP` IN (".implode(',', $keys_with_quotes).")";
 $result = db_query($conn, $sql);
 ?>
 

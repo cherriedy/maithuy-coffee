@@ -14,7 +14,7 @@
             </div>
 
             <!-- Form section for sign up -->
-            <form action="" method="post" class="signup-form-wrapper">
+            <form action="./functions/register/register.php" method="post" class="signup-form-wrapper">
                 <p class="big-heading">Đăng kí tài khoản</p>
                 <div class="social-link-btn">
                     <a href="#"><i class="bx bxl-facebook facebook"></i></a>
@@ -50,12 +50,12 @@
                         <div class="button-wrapper">
                             <div class="text-fields fname">
                                 <label for="fname"><i class='bx bx-user'></i></label>
-                                <input type="text" name="fname" id="fname" placeholder="Nguyễn" required>
+                                <input type="text" name="fname" id="fname"  required>
                             </div>
 
                             <div class="text-fields lname">
                                 <label for="lname"><i class='bx bx-user'></i></label>
-                                <input type="text" name="lname" id="lname" placeholder="Lê Thuỳ Linh" required>
+                                <input type="text" name="lname" id="lname"  required>
                             </div>
                         </div>
 

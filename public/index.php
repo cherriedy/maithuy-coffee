@@ -35,10 +35,6 @@ include_once DIR_RESOURCE . DS . 'session' . DS . 'close.php';
 </head>
 
 <body>
-
-    <!-- INCLUDE: MENU.PHP -->
-
-    <!-- CONTROLLER: NAVIGATION -->
 <?php
 if (isset($_GET["page"])) {
     $page = $_GET["page"];

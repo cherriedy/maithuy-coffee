@@ -668,9 +668,32 @@ footer .horizontal-line.white {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
 }
 .product-wrapper .product-content .product-card .product-des .prodcut-des__price-buy .buy input.quantity-box {
-  width: 50px;
+  width: 100px;
+  height: 44px;
+  border: 1px solid #002D3B;
+  border-radius: 32px;
+  padding-left: 18px;
+  font-size: 1rem;
+}
+.product-wrapper .product-content .product-card .product-des .prodcut-des__price-buy .buy button {
+  width: 20px;
+  height: 20px;
+  padding: 20px;
+  border-radius: 50%;
+  background-color: #002D3B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease 0s;
+  position: absolute;
+  right: 0;
+  cursor: pointer;
+}
+.product-wrapper .product-content .product-card .product-des .prodcut-des__price-buy .buy button i {
+  color: #f0f0f0;
 }
 .product-wrapper .pagination {
   height: 24px;

@@ -83,11 +83,6 @@ $ten_lsp = db_fetch_assoc(db_query($conn, $sql_select_ten_lsp))['TEN_LOAISP'];
                     <!--  -->
                     <div class="dProd-detail__des">
                         <p>
-                            <!-- Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quibusdam dolore deserunt quidem
-                        doloribus cupiditate. Animi, facilis accusantium fuga, dolores alias perspiciatis provident
-                        doloribus corrupti mollitia veniam autem nihil magnam laudantium dicta natus recusandae.
-                        Veritatis facere maxime neque libero dolorem, officia distinctio cumque iste magni ea ex, at
-                        odit illum -->
                             <?php echo $ghi_chu; ?>
                         </p>
                     </div>

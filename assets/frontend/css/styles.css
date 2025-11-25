@@ -597,7 +597,7 @@ footer .main {
     display: flex;
     justify-content: space-between;
     border-top: 1px solid var(--color-muted);
-    /* border-bottom: 1px solid #000; */
+    /* border-bottom: 1px solid var(--color-black); */
 }
 
 .main .column {
@@ -652,7 +652,7 @@ footer i {
     align-items: center;
     justify-content: space-between;
     margin-bottom: 80px;
-    /* background-color: #002B3D; */
+    /* background-color: var(--color-primary); */
 }
 
 #product-page ul {

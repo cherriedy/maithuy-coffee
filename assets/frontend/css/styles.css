@@ -1,5 +1,42 @@
 @import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@600;700;800&family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap');
 
+/*
+ * ==========================================================================
+ * COLOR VARIABLES
+ * ==========================================================================
+ * All site colors are defined as CSS custom properties below.
+ * To change the site's color scheme, modify the values in this :root block.
+ * ==========================================================================
+ */
+:root {
+    /* Primary brand color - deep blue used for headings, footer background, primary text accents */
+    --color-primary: #002B3D;
+
+    /* Accent color - warm brown used for buttons, highlights, and interactive elements */
+    --color-accent: #9E723A;
+
+    /* White - used for backgrounds and light text */
+    --color-white: #ffffff;
+
+    /* Muted gray - used for borders, secondary text, and subtle elements */
+    --color-muted: #cccccc;
+
+    /* Main text color - dark gray for paragraph text */
+    --color-text: #333333;
+
+    /* Black - used for navigation text */
+    --color-black: #000000;
+
+    /* Shadow colors */
+    --color-shadow: rgba(0, 0, 0, 0.3);           /* Standard shadow */
+    --color-shadow-soft: rgba(0, 0, 0, 0.1);      /* Soft shadow for subtle depth */
+    --color-shadow-light: rgba(0, 0, 0, 0.2);     /* Light shadow for hover states */
+    --color-shadow-strong: rgba(0, 0, 0, 0.5);    /* Strong shadow for emphasis */
+
+    /* Transparent - used for transparent backgrounds */
+    --color-transparent: transparent;
+}
+
 /* || GENERAL STYLES || */
 * {
     margin: 0;
@@ -48,8 +85,8 @@ header {
     top: 0;
     z-index: 9999;
     position: sticky;
-    background-color: #fff;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+    background-color: var(--color-white);
+    box-shadow: 0 2px 2px 0 var(--color-shadow-soft);
 }
 
 header .logo {
@@ -89,7 +126,7 @@ header .list:hover {
 
 
 #main-navigation li a {
-    color: #000;
+    color: var(--color-black);
     font-size: 15px;
     font-weight: 600;
     text-transform: uppercase;
@@ -105,7 +142,7 @@ header .list:hover {
     content: "";
     width: 50%;
     height: 2px;
-    background-color: #002B3D;
+    background-color: var(--color-primary);
     position: absolute;
     bottom: -3px;
     left: 2px;
@@ -113,8 +150,8 @@ header .list:hover {
 
 #main-navigation li a:hover,
 #main-navigation li a.active:hover {
-    /* color: #002B3D; */
-    color: #9E723A;
+    /* color: var(--color-primary); */
+    color: var(--color-accent);
 }
 
 /* || BANNER STYLES || */
@@ -133,7 +170,7 @@ header .list:hover {
 
 
 #banner h2 {
-    color: #002B3D;
+    color: var(--color-primary);
     font-size: 200px;
     font-weight: 700;
     letter-spacing: 5px;
@@ -166,21 +203,21 @@ header .list:hover {
 }
 
 .button-space button:first-child a {
-    color: #fff;
+    color: var(--color-white);
 }
 
 .button-space button:first-child {
     margin-right: 20px;
-    background-color: #9E723A !important;
+    background-color: var(--color-accent) !important;
 }
 
 .button-space button:last-child a {
-    color: #002B3D;
+    color: var(--color-primary);
 }
 
 .button-space button:last-child {
-    border: 2px solid #002B3D;
-    background-color: transparent !important;
+    border: 2px solid var(--color-primary);
+    background-color: var(--color-transparent) !important;
 }
 
 /* || ABOUT US SECTION STYLES || */
@@ -217,12 +254,12 @@ header .list:hover {
 }
 
 #about h4 {
-    color: #9E723A;
+    color: var(--color-accent);
     font-size: 20px;
 }
 
 #about h1 {
-    color: #002B3D;
+    color: var(--color-primary);
     font-size: 40px;
     font-weight: 600;
     padding-bottom: 20px;
@@ -242,19 +279,19 @@ header .list:hover {
 }
 
 #about .normal {
-    color: #fff;
+    color: var(--color-white);
     cursor: pointer;
     font-size: 17px;
     font-weight: 500;
     margin-right: 10px;
-    background-color: #002B3D;
-    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.3);
+    background-color: var(--color-primary);
+    box-shadow: 0 5px 15px 0 var(--color-shadow);
     transition: all 0.2s ease 0s;
 }
 
 #about .normal:hover {
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.5);
+    box-shadow: 0 5px 15px 0 var(--color-shadow-strong);
 }
 
 /* || TESTIMONIAL SECTION STYLES || */
@@ -300,12 +337,12 @@ header .list:hover {
     padding: 0 100px;
     font-size: 16px;
     font-weight: 400;
-    color: #333;
+    color: var(--color-text);
 }
 
 .slide .quote-icon {
     font-size: 30px;
-    color: #002B3D;
+    color: var(--color-primary);
 }
 
 .slide .details {
@@ -317,13 +354,13 @@ header .list:hover {
 .details .name {
     font-size: 14px;
     font-weight: 600;
-    color: #333;
+    color: var(--color-text);
 }
 
 .details .job {
     font-size: 12px;
     font-weight: 600;
-    color: #333;
+    color: var(--color-text);
 }
 
 .swiper-btn {
@@ -332,22 +369,22 @@ header .list:hover {
     padding: 25px;
     border-radius: 50%;
     transform: translateY(30px);
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: var(--color-shadow-soft);
     transition: all 0.2s ease 0;
 }
 
 .swiper-btn:hover {
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: var(--color-shadow-light);
 }
 
 .swiper-btn::after, 
 .swiper-btn::before {
-    color: #fff;
+    color: var(--color-white);
     font-size: 20px;
 }
 
 .swiper-pagination-bullet.swiper-pagination-bullet-active {
-    background-color: #002B3D;
+    background-color: var(--color-primary);
 }
 
 /* || CONTACT STYLES */
@@ -358,7 +395,7 @@ header .list:hover {
 
 #contact h1 {
     font-size: 30px;
-    color: #002B3D;
+    color: var(--color-primary);
     margin-bottom: 10px;
     text-transform: uppercase;
 }
@@ -375,14 +412,14 @@ header .list:hover {
 
 .contact-box {
     display: flex;
-    background-color: #fff;
+    background-color: var(--color-white);
 }
 
 .contact-box-left {
     flex-basis: 60%;
     padding: 40px 60px;
     outline: none;
-    border: 1px solid #002B3D;
+    border: 1px solid var(--color-primary);
     background-position: 50% 0;
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.4) 100%), url("../img/layout/about-bg.jpg");
 }
@@ -391,8 +428,8 @@ header .list:hover {
 .contact-box-right {
     flex-basis: 40%;
     padding: 40px 60px;
-    background-color: #002B3D;
-    color: #fff;
+    background-color: var(--color-primary);
+    color: var(--color-white);
 }
 
 .input-row {
@@ -410,7 +447,7 @@ header .list:hover {
     width: 100%;
     outline: none;
     border: none;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid var(--color-muted);
     padding-bottom: 5px;
 }
 
@@ -418,7 +455,7 @@ textarea {
     width: 100%;
     outline: none;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--color-muted);
 }
 
 label {
@@ -426,22 +463,22 @@ label {
     font-weight: 600;
     margin-bottom: 6px;
     display: block;
-    color: #002B3D;
+    color: var(--color-primary);
 }
 
 #contact .submit {
     display: block;
-    color: #fff;
+    color: var(--color-white);
     font-weight: 500;
     width: 100px;
     height: 35px;
     outline: none;
     border: none;
     border-radius: 30px;
-    background-color: #002B3D;
+    background-color: var(--color-primary);
     cursor: pointer;
     margin-top: 20px;
-    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 0 5px 15px 0 var(--color-shadow);
 }
 
 tr td:first-child {
@@ -477,7 +514,7 @@ iframe {
     width: 20px;
     height: 20px;
     outline: none;
-    border: transparent;
+    border: var(--color-transparent);
     border-radius: 50%;
 }
 
@@ -490,7 +527,7 @@ footer {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-color: #002B3D;
+    background-color: var(--color-primary);
 }
 
 #newsletter {
@@ -506,17 +543,17 @@ footer {
 .news-text h4 {
     font-size: 25px;
     font-weight: 600;
-    color: #fff;
+    color: var(--color-white);
 }
 
 .news-text p {
-    color: #fff;
+    color: var(--color-white);
     font-size: 15px;
     font-weight: 500;
 }
 
 .news-text span {
-    color: #9E723A;
+    color: var(--color-accent);
     font-size: 20px;
     font-weight: 700;
     letter-spacing: 1px;
@@ -533,7 +570,7 @@ footer {
     padding: 0 1.25em;
     font-size: 14px;
     width: 100%;
-    border: 1px solid transparent;
+    border: 1px solid var(--color-transparent);
     border-radius: 4px;
     outline: none;
     border-top-right-radius: 0;
@@ -542,7 +579,7 @@ footer {
 
 #newsletter button {
     width: 150px;
-    color: #fff;
+    color: var(--color-white);
     font-size: 15px;
     font-weight: 700;
     border: none;
@@ -550,7 +587,7 @@ footer {
     border-radius: 4px;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
-    background-color: #9E723A;
+    background-color: var(--color-accent);
 }
 
 footer .main {
@@ -559,7 +596,7 @@ footer .main {
     height: auto;
     display: flex;
     justify-content: space-between;
-    border-top: 1px solid #ccc;
+    border-top: 1px solid var(--color-muted);
     /* border-bottom: 1px solid #000; */
 }
 
@@ -579,14 +616,14 @@ footer .main {
 }
 
 .main h4 {
-    color: #fff;
+    color: var(--color-white);
     font-size: 19px;
     font-weight: 700;
     padding-bottom: 15px;
 } 
 
 .main .column p, a {
-    color: #ccc;
+    color: var(--color-muted);
     padding-bottom: 10px;
 }
 
@@ -595,7 +632,7 @@ footer .main {
 }
 
 footer i {
-    color: #ccc;
+    color: var(--color-muted);
     font-size: 25px;
     padding-right: 15px;
 }
@@ -632,13 +669,13 @@ footer i {
 }
 
 #product-page li a {
-    color: #ccc;
+    color: var(--color-muted);
     font-size: 16px;
     transition: all 0.2s ease 0s;
 }
 
 #product-page li a:hover {
-    color: #9E723A;
+    color: var(--color-accent);
 }
 
 .product-container {
@@ -664,16 +701,16 @@ footer i {
     border-radius: 50%;
     margin-right: 15px;
     cursor: pointer;
-    box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 2px 2px 5px 0 var(--color-shadow-light);
     transition: all 0.2s ease 0s;
 }
 
 .product img:hover {
-    box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 3px 3px 5px 0 var(--color-shadow);
 }
 
 .product-des span {
-    color: #002B3D;
+    color: var(--color-primary);
     font-size: 14px;
     font-weight: 600;
     text-transform: uppercase;
@@ -688,5 +725,5 @@ footer i {
 }
 
 .product-des h4 {
-    color: #9E723A;
+    color: var(--color-accent);
 }
